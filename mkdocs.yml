@@ -3,7 +3,8 @@ nav:
     - Home: index.md
     - Precourse preparations: precourse.md
     - Course schedule: course_schedule.md
-    - Exercises: exercises.md
+    - graphdb demo: exercises.md
+    - The Beatles: beatles.md
 
 theme:
   name: material
