@@ -4,7 +4,7 @@ nav:
     - Precourse preparations: precourse.md
     - Course schedule: course_schedule.md
     - graphdb demo: exercises.md
-    - The Beatles: beatles.md
+    - Music example: music.md
 
 theme:
   name: material
