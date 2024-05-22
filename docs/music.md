@@ -48,9 +48,9 @@ Let's look at it's structure when connecting the entities:
 
 Now let's use a bigger music database that uses the same structure:
 
-Download the ttl file [`music.ttl`](https://.../music.ttl)
+Download the ttl file [`music.ttl`](Music/music.ttl)
 
-Upload it in graphdb on your local instance or use our server (TODO check if we did it together before for the people who want to do it by themselves)
+It is already loaded on the RECON4IMD server (TODO add address), but you can also install it on your local instance if you wish.
 
 Now select the albums from our database:
 
@@ -63,8 +63,6 @@ WHERE {
    ?album rdf:type :Album .
 }
 ```
-
-*TODO* check with Marco if not better to create a named graph and change the prefix
 
 **Exercise:** Now adapt the query to select all the solo artists
 
@@ -81,7 +79,8 @@ WHERE {
 
 Question: can we name the variables anything?
 
-Let's add more variables to the queries
+### Basic Graph Patterns
+When one or more triple patterns are used together, they form what is known as a Basic Graph Pattern (BGP). Let’s add one more triple pattern to our previous query to retrieve the artist for each album:
 
 ```sparql
 PREFIX : <http://stardog.com/tutorial/>
@@ -112,196 +111,392 @@ What does the * mean here?
     }
     ```
 
+Now let’s add a third triple pattern to require that the returned artists should be of the SoloArtist type:
 
--------------------------------------------------------------
--------------------------------------------------------------
--------------------------------------------------------------
-Code from Geert used as code examples, to delete in the end
+```sparql
+PREFIX : <http://stardog.com/tutorial/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/iCOF6yaQFPE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-[:fontawesome-solid-file-pdf: Download the presentation](../assets/pdf/04_quality_control.pdf){: .md-button }
-
-* `fastqc` command line [documentation](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/INSTALL.txt)
-* `cutadapt` [manual](https://cutadapt.readthedocs.io/en/stable/)
-* Unix command line [E-utilities documentation](https://www.ncbi.nlm.nih.gov/books/NBK179288/)
-
-## Exercises
-
-### Download and evaluate an E. coli dataset
-
-Check out the dataset at [SRA](https://www.ncbi.nlm.nih.gov/sra/?term=SRR519926).
-
-**Exercise:** Browse around the SRA entry and answer these questions:
-
-**A.** Is the dataset paired-end or single end?
-
-**B.** Which instrument was used for sequencing?
-
-**C.** What is the read length?
-
-**D.** How many reads do we have?
-
-??? done "Answers"
-    A. paired-end
-
-    B. Illumina MiSeq
-
-    C. 2 x 251 bp
-
-    D. 400596
-
-Now we will use some bioinformatics tools to do download reads and perform quality control. The tools are pre-installed in a conda environment called `ngs-tools`. Every time you open a new terminal, you will have to load the environment:
-
-```sh
-conda activate ngs-tools
+SELECT *
+{
+   ?album a :Album .
+   ?album :artist ?artist .
+   ?artist a :SoloArtist .
+}
 ```
 
-Make a directory `reads` in `~/project` and download the reads from the SRA database using `prefetch` and `fastq-dump` from [SRA-Tools](https://ncbi.github.io/sra-tools/) into the `reads` directory. Use the code snippet below to create a scripts called `01_download_reads.sh`. Store it in `~/project/scripts/`, and run it.
+The third pattern matches 276 triples in our graph by itself, but because some solo artists have put out more than one album, 604 results are returned.
 
-```sh title="01_download_reads.sh"
-#!/usr/bin/env bash
+### Ordering Results
+Now we’ll run the following query, which includes album dates:
 
-cd ~/project
-mkdir reads
-cd reads
-prefetch SRR519926
-fastq-dump --split-files SRR519926
+```sparql
+prefix : <http://stardog.com/tutorial/>
+
+SELECT *
+{
+   ?album a :Album ;
+          :artist ?artist ;
+          :date ?date .
+}
 ```
 
-**Exercise:** Check whether the download was successful by counting the number of reads in the fastq files and compare it to the SRA entry.
+If we want the results to be ordered based on a sorting condition, we can add an ORDER BY:
 
-!!! tip "Tip"
-    A read in a fastq file consists of four lines (more on that at [file types](../day2/file_types.md)). Use Google to figure out how to count the number of reads in a fastq file.
+```sparql
+prefix : <http://stardog.com/tutorial/>
 
-??? done "Answer"
-    e.g. from [this](https://www.biostars.org/p/139006/) thread on Biostars:
-
-    ```sh
-    ## forward read
-    echo $(cat SRR519926_1.fastq | wc -l)/4 | bc
-
-    ## reverse read
-    echo $(cat SRR519926_2.fastq | wc -l)/4 | bc
-    ```
-
-### Run fastqc
-
-**Exercise:** Create a script to run `fastqc` and call it `02_run_fastqc.sh`. After that, run it.
-
-!!! tip "Tip"
-    `fastqc` accepts multiple files as input, so you can use a [wildcard](https://en.wikipedia.org/wiki/Glob_(programming)) to run `fastqc` on all the files in one line of code. Use it like this: `*.fastq`.  
-
-??? done "Answer"
-    Your script `~/project/scripts/02_run_fastqc.sh` should look like:
-
-    ```sh title="02_run_fastqc.sh"
-    #!/usr/bin/env bash
-    cd ~/project/reads
-
-    fastqc *.fastq
-    ```
-
-**Exercise:** Download the html files to your local computer, and view the results. How is the quality? Where are the problems?
-
-!!! info "Downloading files"
-    You can download files by right-click the file and after that select **Download**:
-
-    <figure>
-      <img src="../../assets/images/download_file.gif" width="500"/>
-    </figure>
-
-??? done "Answer"
-    There seems to be:
-
-    * Low quality towards the 3' end (per base sequence quality)
-    * Full sequence reads with low quality (per sequence quality scores)
-    * Adapters in the sequences (adapter content)
-
-    We can probably fix most of these issues by trimming.
-
-### Trim the reads
-
-We will use [fastp](https://github.com/OpenGene/fastp) for trimming adapters and low quality bases from our reads. The most used adapters for Illumina are TruSeq adapters, and `fastp` will use those by default. A reference for the adapter sequences can be found [here](https://support.illumina.com/bulletins/2016/12/what-sequences-do-i-use-for-adapter-trimming.html).
-
-**Exercise:** Check out the [documentation of fastp](https://github.com/OpenGene/fastp), and the option defaults by running `fastp --help`. 
-
-- What is the default for the minimum base quality for a qualified base? ( option `--qualified_quality_phred`)
-- What is the default for the maximum percentage of unqualified bases in a read? (option `--unqualified_percent_limit`)
-- What is the default for the minimum required read length? (option `--length_required`)
-- What happens if one read in the pair does not meet the required length after trimming? (it can be specified with the options `--unpaired1` and `--unpaired2`)
-
-??? done "Answer"
-
-    - The minimum base quality is 15: `Default 15 means phred quality >=Q15 is qualified. (int [=15])`
-    - The minimum required length is also 15: `reads shorter than length_required will be discarded, default is 15. (int [=15])`
-    - If one of the reads does not meet the required length, the pair is discarded if `--unpaired1` and/or `--unpaired2` are not specified: `for PE input, if read1 passed QC but read2 not, it will be written to unpaired1. Default is to discard it. (string [=])`. 
-
-**Exercise:** Complete the script below called `03_trim_reads.sh` (replace everything in between brackets `[]`) to run `fastp` to trim the data.  The quality of our dataset is not great, so we will overwrite the defaults.  Use a a minimum qualified base quality of 10, set the maximum percentage of unqalified bases to 80% and a minimum read length of 25. Note that a new directory called `~/project/results/trimmed/` is created to write the trimmed reads.
-
-```sh title="03_trim_reads.sh"
-#!/usr/bin/env bash
-
-TRIMMED_DIR=~/project/results/trimmed
-READS_DIR=~/project/reads
-
-mkdir -p $TRIMMED_DIR
-
-cd $TRIMMED_DIR
-
-fastp \
--i $READS_DIR/SRR519926_1.fastq \
--I $READS_DIR/SRR519926_2.fastq \
--o $TRIMMED_DIR/trimmed_SRR519926_1.fastq \
--O $TRIMMED_DIR/trimmed_SRR519926_2.fastq \
-[QUALIFIED BASE THRESHOLD] \
-[MINIMUM LENGTH THRESHOLD] \
-[UNQUALIFIED PERCENTAGE LIMIT] \
---cut_front \
---cut_tail \
---detect_adapter_for_pe
+SELECT *
+{
+   ?album a :Album ;
+          :artist ?artist ;
+          :date ?date .
+}
+ORDER BY ?date
 ```
 
-!!! note "Additional options"
-    Note that we have set the options `--cut_front` and `--cut_tail` that will ensure low quality bases are trimmed in a sliding window from both the 5' and 3' ends. Also `--detect_adapter_for_pe` is set, which ensures that adapters are detected automatically for both R1 and R2. 
+Now albums will be returned ordered by their release dates.
 
-??? done "Answer"
-    Your script (`~/project/scripts/03_trim_reads.sh`) should look like this:
+It is possible to have multiple sorting conditions by specifying multiple variables (or even function calls) in ORDER BY. We can also sort the results in descending order by encapsulating the sort condition with the DESC keyword, like this: DESC(?date).
 
-    ```sh title="03_trim_reads.sh"
-    #!/usr/bin/env bash
+Limiting Results
+When a query returns too many results, we can limit the results with the LIMIT keyword:
 
-    TRIMMED_DIR=~/project/results/trimmed
-    READS_DIR=~/project/reads
+```sparql
+prefix : <http://stardog.com/tutorial/>
 
-    mkdir -p $TRIMMED_DIR
+SELECT *
+{
+   ?album a :Album ;
+          :artist ?artist ;
+          :date ?date
+}
+ORDER BY desc(?date)
+LIMIT 2
+```
 
-    cd $TRIMMED_DIR
+In this query, we changed the dates to be sorted in reverse chronological order and limited the query to return only two results
 
-    fastp \
-    -i $READS_DIR/SRR519926_1.fastq \
-    -I $READS_DIR/SRR519926_2.fastq \
-    -o $TRIMMED_DIR/trimmed_SRR519926_1.fastq \
-    -O $TRIMMED_DIR/trimmed_SRR519926_2.fastq \
-    --qualified_quality_phred 10 \
-    --length_required 25 \
-    --unqualified_percent_limit 80 \
-    --cut_front \
-    --cut_tail \
-    --detect_adapter_for_pe
-    ```
+### Filtering Results
+We can filter the results returned by a query using a FILTER expression. SPARQL supports many built-in functions for writing such expressions:
 
-!!! note "The use of `\`"
-    In the script above you see that we're using `\` at the end of many lines. We use it to tell bash to ignore the newlines. If we would not do it, the `fastp` command would become a very long line, and the script would become very difficult to read. It is in general good practice to put every option of a long command on a newline in your script and use `\` to ignore the newlines when executing.
+comparison operators: (=, !=, <, <=, >, >=)
+logical operators (&&, ||, !)
+mathematical operators (+, -, /, *)
 
-**Exercise:** Check out the report in `fastp.html`. 
+Plus many others.
 
-- Has the quality improved?
-- How many reads do we have left?
-- *Bonus*: Although there were adapters in R2 according to `fastqc`,  `fastp` has trouble finding adapters in R2. Also, after running `fastp` there doesn't seem to be much adapter left (you can double check by running `fastqc` on `trimmed_SRR519926_2.fastq`). How could that be? 
+If we want to find the albums released in 1970 or later, we can do this with the following filter expression:
 
+```sparql
+prefix : <http://stardog.com/tutorial/>
 
-??? done "Answers"
-    - Yes, low quality 3' end, per sequence quality and adapter sequences have improved. Also the percentages >20 and >30 are higher. 
-    - 624724 reads, so 312362 pairs (78.0%)
-    - The 3' end of R2 has very low quality on average, this means that trimming for low quality removes almost all bases from the original 3' end, including any adapter.  
+SELECT *
+{
+   ?album a :Album ;
+          :artist ?artist ;
+          :date ?date
+   FILTER (?date >= "1970-01-01"^^xsd:date)
+}
+ORDER BY ?date
+```
+
+All otherwise matching results not satisfying the filter condition will be excluded from the results
+
+We can use any SPARQL function in the FILTER expressions. For example, the year function applied to a date value will return the year component as an integer value. So the following query will return the exact same results as the previous query, but the filter is written in a slightly different way:
+
+```sparql
+prefix : <http://stardog.com/tutorial/>
+
+SELECT *
+{
+   ?album a :Album ;
+          :artist ?artist ;
+          :date ?date
+      FILTER (year(?date) >= 1970)
+}
+ORDER BY ?date
+```
+
+### Binding Values
+
+We can assign the output of a function to a variable using the BIND keyword. This might be useful if we want to reuse the function result in different parts of the query or if we want to increase readability when we have a lot of nested function calls.
+
+We can rewrite the previous query by binding the output of the year(?date) expression to a new variable ?year first and using the variable in the filter expresion:
+
+```sparql
+prefix : <http://stardog.com/tutorial/>
+
+SELECT *
+{
+   ?album a :Album ;
+          :artist ?artist ;
+          :date ?date
+   BIND (year(?date) AS ?year)
+   FILTER (?year >= 1970)
+}
+ORDER BY ?date
+```
+
+Because we’re selecting all variables with *, the new variable we’ve bound will add another column to the output
+
+### Removing Duplicates
+
+Our music dataset is not complete by any means, and we have about a thousand albums. Suppose we want to find out the years in which these albums were released. One attempt would be to take the previous query, remove the filter, and only select the ?year variable.
+
+```sparql
+prefix : <http://stardog.com/tutorial/>
+
+SELECT ?year
+{
+   ?album a :Album ;
+          :artist ?artist ;
+          :date ?date
+   BIND (year(?date) AS ?year)
+}
+ORDER BY ?date
+```
+
+But we will quickly discover that this query will still return many results, and the year values will be repeated:
+
+We can see that changing just the selected variables has no effect on the number of results returned by a query. We will still get one result for each matching pattern, so the number of rows in the result table won’t change; only the number of columns will change.
+
+In order to get rid of duplicates, we need to use the DISTINCT keyword right after SELECT:
+
+```sparql
+prefix : <http://stardog.com/tutorial/>
+
+SELECT DISTINCT ?year
+{
+   ?album a :Album ;
+          :artist ?artist ;
+          :date ?date
+   BIND (year(?date) AS ?year)
+}
+ORDER BY ?year
+```
+
+The results won’t have duplicates anymore
+
+### Aggregation
+
+Aggregation is applying a function to a list of values rather than to a single value. Unlike regular functions, aggregate functions can only be used in SELECT expressions. Built-in aggregates provided in SPARQL are COUNT, SUM, MIN, MAX, AVG, GROUP_CONCAT, and SAMPLE.
+
+We can find the earliest and the latest release dates of albums in our dataset by using the MIN and MAX aggregates:
+
+```sparql
+prefix : <http://stardog.com/tutorial/>
+
+SELECT (min(?date) as ?minDate) (max(?date) as ?maxDate)
+{
+    ?album a :Album ;
+           :date ?date
+}
+```
+
+We will get a single result with two columns
+
+The WHERE clause in this query would return a table with two columns and many rows if we didn’t use the aggregate functions. The MIN (respectively, MAX) function looks at the values in the specified column of the results table and returns the single smallest (respectively, largest) value found.
+
+We can use the COUNT function to return the number of rows in the result table. The query to find the number of albums in our dataset is this:
+
+```sparql
+prefix : <http://stardog.com/tutorial/>
+
+SELECT (count(?album) as ?count)
+{
+    ?album a :Album
+}
+```
+
+You can also count the relationships and how many times each type of relationship appears.
+
+```sparql
+prefix : <http://stardog.com/tutorial/>
+
+SELECT ?predicate (COUNT(?predicate) as ?predicateCount)
+{
+    ?subject ?predicate ?object .
+}
+GROUP BY ?predicate
+ORDER BY DESC(?predicateCount)
+```
+
+### Grouping
+
+The previous aggregation examples worked over a single result table and returned a single row as the final result. We can also group the results based on the values of one or more variables and apply the aggregation functions to each group separately.
+
+Suppose we want to find the number of albums released each year. We can group the albums based on their release year and use the COUNT aggregate for each group:
+
+```sparql
+prefix : <http://stardog.com/tutorial/>
+
+SELECT ?year (count(distinct ?album) AS ?count)
+{
+    ?album a :Album ;
+            :date ?date ;
+    BIND (year(?date) AS ?year)
+}
+GROUP BY ?year
+ORDER BY desc(?count)
+```
+
+We will get one result for each distinct year value.
+
+You might notice that we used the DISTINCT keyword inside the count aggregate. This is because some of the albums in our date have duplicate release dates. For example, the album “A Hard Day’s Night” has both 1964-06-26 and 1964-07-10 as release dates. This is due to the imperfection of our dataset, and using the DISTINCT keyword ensures we count the album only once for that year.
+
+This is not a perfect solution since it means we’ll double count albums if their multiple release dates are in different years. It’s better to clean up the data. Fortunately, we can use the aggregates to find which albums have multiple release dates:
+
+```sparql
+prefix : <http://stardog.com/tutorial/>
+
+SELECT ?album (group_concat(?date) AS ?dates)
+{
+    ?album a :Album ;
+            :date ?date
+}
+GROUP BY ?album
+HAVING (count(?date) > 1)
+```
+
+The HAVING keyword we used at the end acts like an overall filter on the query results. Since the aggregates can only be used in SELECT expressions, we cannot use a regular FILTER (without introducing a subquery), so the HAVING keyword provides an easy way to define such filters.
+
+### Subqueries
+
+If we want to find the average number of albums released in a year, we need to use an aggregation function over the results of the previous query. This can be achieved by subqueries where we simply put a SELECT query inside another one:
+
+```sparql
+prefix : <http://stardog.com/tutorial/>
+
+SELECT (avg(?count) AS ?avgCount)
+{
+      SELECT ?year (count(?album) AS ?count)
+      {
+            ?album a :Album ;
+                  :date ?date ;
+            BIND (year(?date) AS ?year)
+      }
+      GROUP BY ?year
+}
+```
+
+The result of this query will be a single value.
+
+Of course, subqueries don’t have to use aggregation; it would be fine to use any kind of SELECT query as a subquery. If the outer WHERE clause contains additional patterns, then the subquery should be surrounded with {}.
+
+### Union
+
+In our data, we have artists separated into two types: bands and solo artists. If we want to retrieve all artists along with their names, then we can use the UNION operator to combine the matches from two different patterns:
+
+```sparql
+prefix : <http://stardog.com/tutorial/>
+
+SELECT ?name
+{
+    { ?artist a :SoloArtist }
+    UNION
+    { ?artist a :Band }
+    ?artist :name ?name
+}
+```
+
+The results will contain artists matching either pattern.
+
+If the same artists matched both patterns, we would get a duplicate result and need DISTINCT to get unique results.
+
+But actually :Band and :SoloArtist are subclasses of :Artist:
+
+```sparql
+prefix : <http://stardog.com/tutorial/>
+
+SELECT ?name
+{
+    ?artist a :Artist ;
+    rdfs:label ?name
+}
+```
+
+And we can see our results are exactly the same.
+
+Optional Matches
+The following query returns the songs and their lengths:
+
+```sparql
+prefix : <http://stardog.com/tutorial/>
+
+SELECT * 
+{
+    ?song a :Song .
+    ?song :length ?length .
+}
+LIMIT 5000 # included to override default limit
+```
+
+When we look at the results, we see this query returns 3,640 results.
+
+Whereas the query without the second pattern returns 3,749 songs:
+
+```sparql
+prefix : <http://stardog.com/tutorial/>
+
+SELECT * 
+{
+    ?song a :Song .
+}
+LIMIT 5000 # included to override default limit
+```
+
+This means there are 109 songs in our dataset that do not have any length information.
+
+We can use OPTIONAL blocks to match patterns that may exist for some nodes but not for others:
+
+```sparql
+prefix : <http://stardog.com/tutorial/>
+
+SELECT ?song ?length 
+{
+    ?song a :Song .
+    OPTIONAL {
+        ?song :length ?length .
+    }
+}
+LIMIT 5000 # included to override default limit
+```
+
+This query will return 3,749 results, where 109 rows will not have a value for the length.
+
+If we only want to see those rows where length is missing, we can add a filter to our query:
+
+```sparql
+prefix : <http://stardog.com/tutorial/>
+
+SELECT ?song ?length 
+{
+    ?song a :Song .
+    OPTIONAL {
+        ?song :length ?length .
+    }
+    FILTER(!bound(?length))
+}
+```
+
+And we get the 109 results we were expecting.
+
+### Negation
+
+The last example shows a somewhat indirect way to find patterns that do not exist in the dataset by using a combination of OPTIONAL and FILTER expressions. But SPARQL provides a special kind of filter for this purpose: NOT EXISTS. The following query will return the same 109 results as the previous query:
+
+```sparql
+prefix : <http://stardog.com/tutorial/>
+
+SELECT ?song 
+{
+    ?song a :Song .
+    FILTER NOT EXISTS {
+        ?song :length ?length .
+    }
+}
+```
+
+Any SPARQL construct can be used inside a NOT EXISTS block.
+

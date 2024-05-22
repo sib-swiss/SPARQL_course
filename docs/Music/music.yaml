@@ -1,0 +1,11 @@
+---
+endpoint           : ${GRAPHDB_URL}
+username           : ${GRAPHDB_USERNAME}
+password           : ${GRAPHDB_PASSWORD}
+repository_id      : MUSIC_REP
+graphdb_config     : music-config.ttl
+setup_base_IRI     : https://www.sinergiawolfender.org/jlw/
+graphs:
+  - dataset: MUSIC
+    file:
+      - music.ttl
