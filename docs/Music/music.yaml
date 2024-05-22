@@ -4,8 +4,8 @@ username           : ${GRAPHDB_USERNAME}
 password           : ${GRAPHDB_PASSWORD}
 repository_id      : MUSIC_REP
 graphdb_config     : music-config.ttl
-setup_base_IRI     : https://www.sinergiawolfender.org/jlw/
+setup_base_IRI     : http://rdf.example.org/context/
 graphs:
   - dataset: MUSIC
     file:
-      - music.ttl
+      - /Users/fburdet/Documents/Courses/SPARQL_course/docs/Music/music.ttl

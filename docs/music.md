@@ -50,7 +50,7 @@ Now let's use a bigger music database that uses the same structure:
 
 Download the ttl file [`music.ttl`](Music/music.ttl)
 
-It is already loaded on the RECON4IMD server (TODO add address), but you can also install it on your local instance if you wish.
+It is already loaded on the ReconXKG server (https://reconx.vital-it.ch), but you can also install it on your local instance if you wish.
 
 Now select the albums from our database:
 
@@ -418,7 +418,8 @@ SELECT ?name
 
 And we can see our results are exactly the same.
 
-Optional Matches
+### Optional Matches
+
 The following query returns the songs and their lengths:
 
 ```sparql
@@ -499,4 +500,112 @@ SELECT ?song
 ```
 
 Any SPARQL construct can be used inside a NOT EXISTS block.
+
+### Property Paths
+
+The triple patterns match triples in the dataset, so they can only be used to find nodes that are directly connected. We can use property paths to match nodes that are connected via arbitrary-length paths. More generally, a property path is a regular expression describing the possible route between two nodes in a graph. Property paths can also be used to express some graph patterns more concisely.
+
+To explore what we can do with property paths we will start with this query that uses two ordinary triple patterns to find pairs of people who wrote songs together:
+
+```sparql
+prefix : <http://stardog.com/tutorial/>
+
+select distinct ?artist ?cowriter
+{
+    ?song :writer ?artist .
+    ?song :writer ?cowriter
+    FILTER (?artist != ?cowriter)
+}
+```
+
+We need DISTINCT in this query because the same pair might have cowritten multiple songs together. We need the FILTER because otherwise the query would match the songs with a single writer and bind the two variables ?artist and ?cowriter to the same person. Using a different variable does not ensure that the triple patterns match different triples in the data. This query returns each pair twice; we leave it as an exercise to the reader to come up with a different filter expression to return every pair only once.
+
+#### INVERSE PATH
+
+Adding the symbol ^ in front of a predicate (or a property path expression) makes it an inverse path expression. An inverse path expression simply flips the direction of the match: the subject of the triple pattern will match the object of the triple in the data, and the object of the triple pattern will match the subject. So an equivalent way to write the previous query is as follows:
+
+```sparql
+prefix : <http://stardog.com/tutorial/>
+
+select distinct ?artist ?cowriter
+{
+    ?artist ^:writer ?song .
+    ?song :writer ?cowriter
+    FILTER (?artist != ?cowriter)
+}
+```
+
+By itself, an inverse property path expression is not very useful, but in combination with other property path expressions, it can be (as we will see next).
+
+#### SEQUENCE PATH
+
+When the object of one triple pattern is the same as the subject of another triple pattern, and we are not interested in the binding of the variable, we can combine the two patterns using a sequence path. A sequence path means the subject is connected to the object via the path of property expressions specified in the sequence. The next query returns the same results as the previous query:
+
+```sparql
+prefix : <http://stardog.com/tutorial/>
+
+select distinct ?artist ?cowriter
+{
+    ?artist ^:writer/:writer ?cowriter
+    FILTER (?artist != ?cowriter)
+}
+```
+
+There can be more than two expressions in a path if necessary. We can also use constants for the subject or the object or both. The next query returns cowriters of Paul McCartney:
+
+```sparql
+prefix : <http://stardog.com/tutorial/>
+
+select distinct ?cowriter
+{
+    :Paul_McCartney ^:writer/:writer ?cowriter
+    FILTER (?cowriter != :Paul_McCartney)
+}
+order by ?cowriter
+```
+
+#### RECURSIVE PATHS
+
+Suppose we want to find not only the cowriters of Paul McCartney, but also the cowriters of his cowriters, and continue finding cowriters recursively. We can use the recursive path operator + to follow a property path one or more times.
+
+```sparql
+prefix : <http://stardog.com/tutorial/>
+
+select distinct ?cowriter
+{
+    :Paul_McCartney (^:writer/:writer)+ ?cowriter
+    FILTER (?cowriter != :Paul_McCartney)
+}
+order by ?cowriter
+```
+
+The other recursive operator, *, is used to follow a path zero or more times. Following a path zero times means we don’t traverse any edges and simply return the same node as the starting node. This makes most sense when used in a sequence path as in rdf:type/rdfs:subClassOf*. This property path returns the type(s) of a node and all its superclasses.
+
+#### OPTIONAL PATHS
+
+In our dataset, we have both the solo albums released by Paul McCartney and the albums released by The Beatles. The next query would return both kinds of album:
+
+```sparql
+prefix : <http://stardog.com/tutorial/>
+
+select ?album 
+{
+  ?album :artist/:member? :Paul_McCartney
+}
+```
+
+The ? suffix means we should follow a path zero or one times. The property path expression :artist/:member? would start with an album and first find all the nodes connected via the :artist predicate and return those nodes (since we would end up on those nodes when we follow the :member edge zero times). Then if any of those nodes have a :member edge, it will follow those edges and return the new nodes we reach as well.
+
+#### ALTERNATIVE PATHS
+
+Suppose we want to find all the songs related to Paul McCartney: songs released in either his solo albums or The Beatles’ albums, along with the songs he wrote that were recorded by other artists. We need to find three alternate paths from songs to Paul McCartney. The previous property path expression already (partially) encodes two of these paths, and the third alternate path can be introduced using the | path operator:
+
+```sparql
+prefix : <http://stardog.com/tutorial/>
+
+select ?song 
+{
+  ?song (^:track/:artist/:member?)|:writer :Paul_McCartney
+}
+```
 
