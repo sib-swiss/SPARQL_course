@@ -46,7 +46,7 @@ Let's look at it's structure when connecting the entities:
   <img src="../../assets/images/rdf-beatles.png" width="700"/>
 </figure>
 
-Now let's use a bigger music database that uses the same structure:
+Now let's use a bigger music database that uses the same structure (it's from DBpedia):
 
 Download the ttl file [`music.ttl`](Music/music.ttl)
 
@@ -76,8 +76,6 @@ WHERE {
         ?artist rdf:type :SoloArtist .
     }
     ```
-
-Question: can we name the variables anything?
 
 ### Basic Graph Patterns
 When one or more triple patterns are used together, they form what is known as a Basic Graph Pattern (BGP). Let’s add one more triple pattern to our previous query to retrieve the artist for each album:
