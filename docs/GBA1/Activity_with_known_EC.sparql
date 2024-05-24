@@ -1,0 +1,9 @@
+# What are catalytic activities associated with an EC number?
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX up: <http://purl.uniprot.org/core/>
+SELECT * WHERE {
+	?CatalyticActivity  rdf:type               up:Catalytic_Activity ;
+	                    up:catalyzedReaction   ?rhea ;
+	                    up:enzymeClass         ?EC .
+}
