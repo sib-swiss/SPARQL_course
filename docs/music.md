@@ -504,6 +504,8 @@ Any SPARQL construct can be used inside a NOT EXISTS block.
 
 ### Property Paths
 
+This is more advanced and optional for now ;)
+
 The triple patterns match triples in the dataset, so they can only be used to find nodes that are directly connected. We can use property paths to match nodes that are connected via arbitrary-length paths. More generally, a property path is a regular expression describing the possible route between two nodes in a graph. Property paths can also be used to express some graph patterns more concisely.
 
 To explore what we can do with property paths, we will start with this query that uses two ordinary triple patterns to find pairs of people who wrote songs together:

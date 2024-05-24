@@ -3,6 +3,7 @@ nav:
     - Home: index.md
     - Pre-course preparations: precourse.md
     - Course schedule: course_schedule.md
+    - RDF concepts: concepts.md
     - GraphDB demo: exercises.md
     - Music example: music.md
 
