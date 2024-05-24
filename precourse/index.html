@@ -16,15 +16,15 @@
       
       
       <link rel="icon" href="../assets/images/SIB_logo.svg">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.21">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.23">
     
     
       
-        <title>Precourse preparations - My site</title>
+        <title>Pre-course preparations - Recon4IMD SPARQL Course</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.66ac8b77.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
       
       
 
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#unix" class="md-skip">
+        <a href="#software" class="md-skip">
           Skip to content
         </a>
       
@@ -80,7 +80,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="My site" class="md-header__button md-logo" aria-label="My site" data-md-component="logo">
+    <a href=".." title="Recon4IMD SPARQL Course" class="md-header__button md-logo" aria-label="Recon4IMD SPARQL Course" data-md-component="logo">
       
   <img src="../assets/images/SIB_logo.svg" alt="logo">
 
@@ -93,13 +93,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            My site
+            Recon4IMD SPARQL Course
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Precourse preparations
+              Pre-course preparations
             
           </span>
         </div>
@@ -186,12 +186,12 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="My site" class="md-nav__button md-logo" aria-label="My site" data-md-component="logo">
+    <a href=".." title="Recon4IMD SPARQL Course" class="md-nav__button md-logo" aria-label="Recon4IMD SPARQL Course" data-md-component="logo">
       
   <img src="../assets/images/SIB_logo.svg" alt="logo">
 
     </a>
-    My site
+    Recon4IMD SPARQL Course
   </label>
   
     <div class="md-nav__source">
@@ -246,7 +246,7 @@
           
   
   <span class="md-ellipsis">
-    Precourse preparations
+    Pre-course preparations
   </span>
   
 
@@ -257,7 +257,7 @@
         
   
   <span class="md-ellipsis">
-    Precourse preparations
+    Pre-course preparations
   </span>
   
 
@@ -275,15 +275,6 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#unix" class="md-nav__link">
-    <span class="md-ellipsis">
-      UNIX
-    </span>
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#software" class="md-nav__link">
@@ -333,7 +324,27 @@
         
   
   <span class="md-ellipsis">
-    Exercises
+    GraphDB demo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../music/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Music example
   </span>
   
 
@@ -367,15 +378,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#unix" class="md-nav__link">
-    <span class="md-ellipsis">
-      UNIX
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#software" class="md-nav__link">
     <span class="md-ellipsis">
       Software
@@ -402,25 +404,24 @@
   
 
 
-  <h1>Precourse preparations</h1>
+  <h1>Pre-course preparations</h1>
 
-<h2 id="unix">UNIX</h2>
-<p>As is stated in the course prerequisites at the <a href="https://www.sib.swiss/training/">announcement web page</a>, we expect participants to have a basic understanding of working with the command line on UNIX-based systems. You can test your UNIX skills with a quiz <a href="https://docs.google.com/forms/d/e/1FAIpQLSd2BEWeOKLbIRGBT_aDEGPce1FOaVYBbhBiaqcaHoBKNB27MQ/viewform?usp=sf_link">here</a>. If you don&rsquo;t have experience with UNIX command line, or if you&rsquo;re unsure whether you meet the prerequisites, follow our <a href="https://edu.sib.swiss/pluginfile.php/2878/mod_resource/content/4/couselab-html/content.html">online UNIX tutorial</a>.</p>
 <h2 id="software">Software</h2>
-<p>We will be mainly working on an Amazon Web Services (<a href="https://aws.amazon.com/">AWS</a>)  Elastic Cloud (EC2) server. Our Ubuntu server behaves like a &lsquo;normal&rsquo; remote server, and can be approached through <code>ssh</code> with a username, key and IP address. All participants will be granted access to a personal home directory.</p>
-<p>Before the course, make sure you can comfortably work on a remote server. This means that you can approach it through the shell, modify scripts and transfer files. We can recommend <code>atom</code> for Linux and Mac, and <code>Notepad ++</code> in combination with MobaXterm for Windows. We will be visualising our results with IGV. Therefore, install in your computer:</p>
-<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">mac OS/Linux</label><div class="tabbed-content">
+<p>We will be mainly working on a remote <a href="https://graphdb.ontotext.com/">GraphDB</a> instance, <a href="https://reconx.vital-it.ch/">dedicated to Recon4IMD</a>.</p>
+<p>Other SPARQL endpoints will also be used remotely.</p>
+<p>You can, if you want, install GraphDB on your own computer. The GraphDB semantic graph database is available for most computers <a href="https://www.ontotext.com/products/graphdb/download/">here</a>. Fill the form (Select <code>GraphDB Free</code>) to access the GraphDB download links.</p>
+<p>TO REMOVE ?</p>
+<p>Before the course, make sure you can comfortably work on a remote server. This means that you can approach it through the shell, modify scripts and transfer files. We can recommend <code>atom</code> for Linux and Mac, and <code>Notepad ++</code> in combination with MobaXterm for Windows. Therefore, install in your computer:</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">MacOS/Linux</label><div class="tabbed-content">
 <ul>
 <li>SSH and scripting: <a href="https://atom.io/">Atom</a> with packages like: <a href="https://atom.io/packages/terminus"><code>terminus</code></a> and <a href="https://atom.io/packages/ftp-remote-edit"><code>ftp-remote-edit</code></a></li>
 <li>Transferring files: <a href="https://filezilla-project.org/">FileZilla</a></li>
-<li><a href="http://software.broadinstitute.org/software/igv/">Integrative Genomics Viewer (IGV)</a></li>
 </ul>
 </div>
 <input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Windows</label><div class="tabbed-content">
 <ul>
 <li>SSH and scripting: <a href="https://mobaxterm.mobatek.net/" title="get MobaXterm">MobaXterm</a> and/or <a href="https://notepad-plus-plus.org/downloads/">Notepad++</a> with the plugin <code>NppFTP</code></li>
 <li>Transferring files: <a href="https://filezilla-project.org/">FileZilla</a></li>
-<li><a href="http://software.broadinstitute.org/software/igv/">Integrative Genomics Viewer (IGV)</a></li>
 </ul>
 </div>
 </div>
@@ -473,7 +474,7 @@
     <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.a7c05c9e.min.js"></script>
+      <script src="../assets/javascripts/bundle.ebd0bdb7.min.js"></script>
       
     
   </body>

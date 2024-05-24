@@ -1,0 +1,1262 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../exercises/">
+      
+      
+      
+      <link rel="icon" href="../assets/images/SIB_logo.svg">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.23">
+    
+    
+      
+        <title>Music example - Recon4IMD SPARQL Course</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#learning-outcomes" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Recon4IMD SPARQL Course" class="md-header__button md-logo" aria-label="Recon4IMD SPARQL Course" data-md-component="logo">
+      
+  <img src="../assets/images/SIB_logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Recon4IMD SPARQL Course
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Music example
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/sib-swiss/course_website_template" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sib-swiss/course_website_template
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Recon4IMD SPARQL Course" class="md-nav__button md-logo" aria-label="Recon4IMD SPARQL Course" data-md-component="logo">
+      
+  <img src="../assets/images/SIB_logo.svg" alt="logo">
+
+    </a>
+    Recon4IMD SPARQL Course
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/sib-swiss/course_website_template" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sib-swiss/course_website_template
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../precourse/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pre-course preparations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../course_schedule/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course schedule
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GraphDB demo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Music example
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Music example
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-outcomes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning outcomes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#material" class="md-nav__link">
+    <span class="md-ellipsis">
+      Material
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Material">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-graph-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Graph Patterns
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ordering-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ordering Results
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtering-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filtering Results
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binding-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      Binding Values
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removing-duplicates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Removing Duplicates
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aggregation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aggregation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grouping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Grouping
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subqueries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subqueries
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#union" class="md-nav__link">
+    <span class="md-ellipsis">
+      Union
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-matches" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional Matches
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#negation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Negation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#property-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      Property Paths
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Property Paths">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inverse-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      INVERSE PATH
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sequence-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      SEQUENCE PATH
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recursive-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      RECURSIVE PATHS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      OPTIONAL PATHS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alternative-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      ALTERNATIVE PATHS
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-outcomes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning outcomes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#material" class="md-nav__link">
+    <span class="md-ellipsis">
+      Material
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Material">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-graph-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Graph Patterns
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ordering-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ordering Results
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtering-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filtering Results
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binding-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      Binding Values
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removing-duplicates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Removing Duplicates
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aggregation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aggregation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grouping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Grouping
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subqueries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subqueries
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#union" class="md-nav__link">
+    <span class="md-ellipsis">
+      Union
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-matches" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional Matches
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#negation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Negation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#property-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      Property Paths
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Property Paths">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inverse-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      INVERSE PATH
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sequence-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      SEQUENCE PATH
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recursive-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      RECURSIVE PATHS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      OPTIONAL PATHS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alternative-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      ALTERNATIVE PATHS
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>Music example</h1>
+
+<h2 id="learning-outcomes">Learning outcomes</h2>
+<p><strong>After having completed this chapter you will be able to:</strong></p>
+<ul>
+<li>Understand the structure of a simple database encoded in turtle</li>
+<li>Write simple SELECT SPARQL queries</li>
+</ul>
+<h2 id="material">Material</h2>
+<p>The exercises below are based on <a href="https://docs.stardog.com/getting-started-series/getting-started-4">this tutorial</a> and <a href="https://github.com/stardog-union/stardog-tutorials/tree/master/music">data</a> from <a href="https://docs.stardog.com/">Stardog</a>.</p>
+<p>Let&rsquo;s look at a small example of the music database:</p>
+<div class="highlight"><span class="filename">beatles_notsimplified.ttl</span><pre><span></span><code><span class="nv">PREFIX</span><span class="w"> </span>:<span class="w"> </span><span class="o">&lt;</span><span class="nv">http</span>:<span class="o">//</span><span class="nv">contextualise</span>.<span class="nv">dev</span><span class="o">/</span><span class="nv">ontology</span><span class="o">/&gt;</span>
+<span class="nv">PREFIX</span><span class="w"> </span><span class="nv">rdf</span>:<span class="w"> </span><span class="o">&lt;</span><span class="nv">http</span>:<span class="o">//</span><span class="nv">www</span>.<span class="nv">w3</span>.<span class="nv">org</span><span class="o">/</span><span class="mi">1999</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="mi">22</span><span class="o">-</span><span class="nv">rdf</span><span class="o">-</span><span class="nv">syntax</span><span class="o">-</span><span class="nv">ns</span>#<span class="o">&gt;</span>
+<span class="nv">PREFIX</span><span class="w"> </span><span class="nv">xsd</span>:<span class="w"> </span><span class="o">&lt;</span><span class="nv">http</span>:<span class="o">//</span><span class="nv">www</span>.<span class="nv">w3</span>.<span class="nv">org</span><span class="o">/</span><span class="mi">2001</span><span class="o">/</span><span class="nv">XMLSchema</span>#<span class="o">&gt;</span>
+
+<span class="nl">:The_Beatles</span><span class="w">      </span><span class="nv">rdf</span>:<span class="nv">type</span><span class="w">  </span>:<span class="nv">Band</span><span class="w"> </span>.
+<span class="nl">:The_Beatles</span><span class="w">      </span>:<span class="nv">name</span><span class="w">     </span><span class="s2">&quot;The Beatles&quot;</span><span class="w"> </span>.
+<span class="nl">:The_Beatles</span><span class="w">      </span>:<span class="nv">member</span><span class="w">   </span>:<span class="nv">John_Lennon</span><span class="w"> </span>.
+<span class="nl">:The_Beatles</span><span class="w">      </span>:<span class="nv">member</span><span class="w">   </span>:<span class="nv">Paul_McCartney</span><span class="w"> </span>.
+<span class="nl">:The_Beatles</span><span class="w">      </span>:<span class="nv">member</span><span class="w">   </span>:<span class="nv">Ringo_Starr</span><span class="w"> </span>.
+<span class="nl">:The_Beatles</span><span class="w">      </span>:<span class="nv">member</span><span class="w">   </span>:<span class="nv">George_Harrison</span><span class="w"> </span>.
+<span class="nl">:John_Lennon</span><span class="w">      </span><span class="nv">rdf</span>:<span class="nv">type</span><span class="w">  </span>:<span class="nv">SoloArtist</span><span class="w"> </span>.
+<span class="nl">:Paul_McCartney</span><span class="w">   </span><span class="nv">rdf</span>:<span class="nv">type</span><span class="w">  </span>:<span class="nv">SoloArtist</span><span class="w"> </span>.
+<span class="nl">:Ringo_Starr</span><span class="w">      </span><span class="nv">rdf</span>:<span class="nv">type</span><span class="w">  </span>:<span class="nv">SoloArtist</span><span class="w"> </span>.
+<span class="nl">:George_Harrison</span><span class="w">  </span><span class="nv">rdf</span>:<span class="nv">type</span><span class="w">  </span>:<span class="nv">SoloArtist</span><span class="w"> </span>.
+<span class="nl">:Please_Please_Me</span><span class="w"> </span><span class="nv">rdf</span>:<span class="nv">type</span><span class="w">  </span>:<span class="nv">Album</span><span class="w"> </span>.
+<span class="nl">:Please_Please_Me</span><span class="w"> </span>:<span class="nv">name</span><span class="w">     </span><span class="s2">&quot;Please Please Me&quot;</span><span class="w"> </span>.
+<span class="nl">:Please_Please_Me</span><span class="w"> </span>:<span class="nv">date</span><span class="w">     </span><span class="s2">&quot;1963-03-22&quot;</span><span class="o">^^</span><span class="nv">xsd</span>:<span class="nv">date</span><span class="w"> </span>.
+<span class="nl">:Please_Please_Me</span><span class="w"> </span>:<span class="nv">artist</span><span class="w">   </span>:<span class="nv">The_Beatles</span><span class="w"> </span>.
+<span class="nl">:Please_Please_Me</span><span class="w"> </span>:<span class="nv">track</span><span class="w">    </span>:<span class="nv">Love_Me_Do</span><span class="w"> </span>.
+<span class="nl">:Love_Me_Do</span><span class="w">       </span><span class="nv">rdf</span>:<span class="nv">type</span><span class="w">  </span>:<span class="nv">Song</span><span class="w"> </span>.
+<span class="nl">:Love_Me_Do</span><span class="w">       </span>:<span class="nv">name</span><span class="w">     </span><span class="s2">&quot;Love Me Do&quot;</span><span class="w"> </span>.
+<span class="nl">:Love_Me_Do</span><span class="w">       </span>:<span class="nv">length</span><span class="w">   </span><span class="mi">125</span><span class="w"> </span>.
+<span class="nl">:Love_Me_Do</span><span class="w">       </span>:<span class="nv">writer</span><span class="w">   </span>:<span class="nv">John_Lennon</span><span class="w"> </span>.
+<span class="nl">:Love_Me_Do</span><span class="w">       </span>:<span class="nv">writer</span><span class="w">   </span>:<span class="nv">Paul_McCartney</span><span class="w"> </span>.
+</code></pre></div>
+<p>Could it be simplified?</p>
+<p>Let&rsquo;s look at its structure when connecting the entities:</p>
+<figure>
+  <img src="../../assets/images/rdf-beatles.png" width="700"/>
+</figure>
+
+<p>Now let&rsquo;s use a bigger music database that uses the same structure (it&rsquo;s from DBpedia):</p>
+<p>Download the ttl file <a href="../Music/music.ttl"><code>music.ttl</code></a></p>
+<p>It is already loaded on the ReconXKG server (https://reconx.vital-it.ch), but you can also install it on your local instance if you wish.</p>
+<p>Now select the albums from our database:</p>
+<div class="highlight"><span class="filename">select_album.sparql</span><pre><span></span><code><span class="k">PREFIX</span> <span class="p">:</span> <span class="nl">&lt;http://stardog.com/tutorial/&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">rdf</span><span class="p">:</span> <span class="nl">&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;</span>
+
+<span class="k">SELECT</span> <span class="nv">?album</span>
+<span class="k">WHERE</span> <span class="p">{</span>
+   <span class="nv">?album</span> <span class="nn">rdf</span><span class="p">:</span><span class="nt">type</span> <span class="p">:</span><span class="nt">Album</span> <span class="p">.</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Exercise:</strong> Now adapt the query to select all the solo artists</p>
+<details class="done">
+<summary>Answer</summary>
+<div class="highlight"><pre><span></span><code><span class="k">PREFIX</span> <span class="p">:</span> <span class="nl">&lt;http://stardog.com/tutorial/&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">rdf</span><span class="p">:</span> <span class="nl">&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;</span>
+
+<span class="k">SELECT</span> <span class="nv">?artist</span>
+<span class="k">WHERE</span> <span class="p">{</span>
+    <span class="nv">?artist</span> <span class="nn">rdf</span><span class="p">:</span><span class="nt">type</span> <span class="p">:</span><span class="nt">SoloArtist</span> <span class="p">.</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<h3 id="basic-graph-patterns">Basic Graph Patterns</h3>
+<p>When one or more triple patterns are used together, they form what is known as a Basic Graph Pattern (BGP). Let’s add one more triple pattern to our previous query to retrieve the artist for each album:</p>
+<div class="highlight"><pre><span></span><code><span class="k">PREFIX</span> <span class="p">:</span> <span class="nl">&lt;http://stardog.com/tutorial/&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">rdf</span><span class="p">:</span> <span class="nl">&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;</span>
+
+<span class="k">SELECT</span> <span class="o">*</span>
+<span class="k">WHERE</span> <span class="p">{</span>
+    <span class="nv">?album</span> <span class="nn">rdf</span><span class="p">:</span><span class="nt">type</span> <span class="p">:</span><span class="nt">Album</span> <span class="p">.</span>
+    <span class="nv">?album</span> <span class="p">:</span><span class="nt">artist</span> <span class="nv">?artist</span> <span class="p">.</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>What does the * mean here?</p>
+<p><strong>Exercise:</strong> Add the solo artists and album &ldquo;nice&rdquo; names to this query. Hide the IDs from the results. Reorder by artist - album</p>
+<details class="done">
+<summary>Answer</summary>
+<div class="highlight"><pre><span></span><code><span class="k">PREFIX</span> <span class="p">:</span> <span class="nl">&lt;http://stardog.com/tutorial/&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">rdf</span><span class="p">:</span> <span class="nl">&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;</span>
+
+<span class="k">SELECT</span> <span class="nv">?artist_name</span> <span class="nv">?album_name</span>
+<span class="k">WHERE</span> <span class="p">{</span>
+  <span class="nv">?album</span> <span class="nn">rdf</span><span class="p">:</span><span class="nt">type</span> <span class="p">:</span><span class="nt">Album</span> <span class="p">.</span>
+    <span class="nv">?album</span> <span class="p">:</span><span class="nt">name</span> <span class="nv">?album_name</span> <span class="p">.</span>
+    <span class="nv">?album</span> <span class="p">:</span><span class="nt">artist</span> <span class="nv">?artist</span> <span class="p">.</span>
+    <span class="nv">?artist</span> <span class="p">:</span><span class="nt">name</span> <span class="nv">?artist_name</span> <span class="p">.</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<p>Now let’s add a third triple pattern to require that the returned artists should be of the SoloArtist type:</p>
+<div class="highlight"><pre><span></span><code><span class="k">PREFIX</span> <span class="p">:</span> <span class="nl">&lt;http://stardog.com/tutorial/&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">rdf</span><span class="p">:</span> <span class="nl">&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;</span>
+
+<span class="k">SELECT</span> <span class="o">*</span>
+<span class="p">{</span>
+   <span class="nv">?album</span> <span class="k">a</span> <span class="p">:</span><span class="nt">Album</span> <span class="p">.</span>
+   <span class="nv">?album</span> <span class="p">:</span><span class="nt">artist</span> <span class="nv">?artist</span> <span class="p">.</span>
+   <span class="nv">?artist</span> <span class="k">a</span> <span class="p">:</span><span class="nt">SoloArtist</span> <span class="p">.</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The third pattern matches 276 triples in our graph by itself, but because some solo artists have put out more than one album, 604 results are returned.</p>
+<h3 id="ordering-results">Ordering Results</h3>
+<p>Now we’ll run the following query, which includes album dates:</p>
+<div class="highlight"><pre><span></span><code><span class="k">prefix</span> <span class="p">:</span> <span class="nl">&lt;http://stardog.com/tutorial/&gt;</span>
+
+<span class="k">SELECT</span> <span class="o">*</span>
+<span class="p">{</span>
+   <span class="nv">?album</span> <span class="k">a</span> <span class="p">:</span><span class="nt">Album</span> <span class="p">;</span>
+          <span class="p">:</span><span class="nt">artist</span> <span class="nv">?artist</span> <span class="p">;</span>
+          <span class="p">:</span><span class="nt">date</span> <span class="nv">?date</span> <span class="p">.</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>If we want the results to be ordered based on a sorting condition, we can add an ORDER BY:</p>
+<div class="highlight"><pre><span></span><code><span class="k">prefix</span> <span class="p">:</span> <span class="nl">&lt;http://stardog.com/tutorial/&gt;</span>
+
+<span class="k">SELECT</span> <span class="o">*</span>
+<span class="p">{</span>
+   <span class="nv">?album</span> <span class="k">a</span> <span class="p">:</span><span class="nt">Album</span> <span class="p">;</span>
+          <span class="p">:</span><span class="nt">artist</span> <span class="nv">?artist</span> <span class="p">;</span>
+          <span class="p">:</span><span class="nt">date</span> <span class="nv">?date</span> <span class="p">.</span>
+<span class="p">}</span>
+<span class="k">ORDER BY</span> <span class="nv">?date</span>
+</code></pre></div>
+<p>Now albums will be returned ordered by their release dates.</p>
+<p>It is possible to have multiple sorting conditions by specifying multiple variables (or even function calls) in ORDER BY. We can also sort the results in descending order by encapsulating the sort condition with the DESC keyword, like this: DESC(?date).</p>
+<p>Limiting Results
+When a query returns too many results, we can limit the results with the LIMIT keyword:</p>
+<div class="highlight"><pre><span></span><code><span class="k">prefix</span> <span class="p">:</span> <span class="nl">&lt;http://stardog.com/tutorial/&gt;</span>
+
+<span class="k">SELECT</span> <span class="o">*</span>
+<span class="p">{</span>
+   <span class="nv">?album</span> <span class="k">a</span> <span class="p">:</span><span class="nt">Album</span> <span class="p">;</span>
+          <span class="p">:</span><span class="nt">artist</span> <span class="nv">?artist</span> <span class="p">;</span>
+          <span class="p">:</span><span class="nt">date</span> <span class="nv">?date</span>
+<span class="p">}</span>
+<span class="k">ORDER BY</span> <span class="k">desc</span><span class="p">(</span><span class="nv">?date</span><span class="p">)</span>
+<span class="k">LIMIT</span> <span class="mi">2</span>
+</code></pre></div>
+<p>In this query, we changed the dates to be sorted in reverse chronological order and limited the query to return only two results</p>
+<h3 id="filtering-results">Filtering Results</h3>
+<p>We can filter the results returned by a query using a FILTER expression. SPARQL supports many built-in functions for writing such expressions:</p>
+<p>comparison operators: (=, !=, &lt;, &lt;=, &gt;, &gt;=)
+logical operators (&amp;&amp;, ||, !)
+mathematical operators (+, -, /, *)</p>
+<p>Plus many others.</p>
+<p>If we want to find the albums released in 1970 or later, we can do this with the following filter expression:</p>
+<div class="highlight"><pre><span></span><code><span class="k">prefix</span> <span class="p">:</span> <span class="nl">&lt;http://stardog.com/tutorial/&gt;</span>
+
+<span class="k">SELECT</span> <span class="o">*</span>
+<span class="p">{</span>
+   <span class="nv">?album</span> <span class="k">a</span> <span class="p">:</span><span class="nt">Album</span> <span class="p">;</span>
+          <span class="p">:</span><span class="nt">artist</span> <span class="nv">?artist</span> <span class="p">;</span>
+          <span class="p">:</span><span class="nt">date</span> <span class="nv">?date</span>
+   <span class="k">FILTER</span> <span class="p">(</span><span class="nv">?date</span> <span class="o">&gt;=</span> <span class="s">&quot;1970-01-01&quot;</span><span class="o">^^</span><span class="nn">xsd</span><span class="p">:</span><span class="nt">date</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="k">ORDER BY</span> <span class="nv">?date</span>
+</code></pre></div>
+<p>All otherwise matching results not satisfying the filter condition will be excluded from the results</p>
+<p>We can use any SPARQL function in the FILTER expressions. For example, the year function applied to a date value will return the year component as an integer value. So the following query will return the exact same results as the previous query, but the filter is written in a slightly different way:</p>
+<div class="highlight"><pre><span></span><code><span class="k">prefix</span> <span class="p">:</span> <span class="nl">&lt;http://stardog.com/tutorial/&gt;</span>
+
+<span class="k">SELECT</span> <span class="o">*</span>
+<span class="p">{</span>
+   <span class="nv">?album</span> <span class="k">a</span> <span class="p">:</span><span class="nt">Album</span> <span class="p">;</span>
+          <span class="p">:</span><span class="nt">artist</span> <span class="nv">?artist</span> <span class="p">;</span>
+          <span class="p">:</span><span class="nt">date</span> <span class="nv">?date</span>
+      <span class="k">FILTER</span> <span class="p">(</span><span class="nf">year</span><span class="p">(</span><span class="nv">?date</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1970</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="k">ORDER BY</span> <span class="nv">?date</span>
+</code></pre></div>
+<h3 id="binding-values">Binding Values</h3>
+<p>We can assign the output of a function to a variable using the BIND keyword. This might be useful if we want to reuse the function result in different parts of the query or if we want to increase readability when we have a lot of nested function calls.</p>
+<p>We can rewrite the previous query by binding the output of the year(?date) expression to a new variable ?year first and using the variable in the filter expression:</p>
+<div class="highlight"><pre><span></span><code><span class="k">prefix</span> <span class="p">:</span> <span class="nl">&lt;http://stardog.com/tutorial/&gt;</span>
+
+<span class="k">SELECT</span> <span class="o">*</span>
+<span class="p">{</span>
+   <span class="nv">?album</span> <span class="k">a</span> <span class="p">:</span><span class="nt">Album</span> <span class="p">;</span>
+          <span class="p">:</span><span class="nt">artist</span> <span class="nv">?artist</span> <span class="p">;</span>
+          <span class="p">:</span><span class="nt">date</span> <span class="nv">?date</span>
+   <span class="k">BIND</span> <span class="p">(</span><span class="nf">year</span><span class="p">(</span><span class="nv">?date</span><span class="p">)</span> <span class="k">AS</span> <span class="nv">?year</span><span class="p">)</span>
+   <span class="k">FILTER</span> <span class="p">(</span><span class="nv">?year</span> <span class="o">&gt;=</span> <span class="mi">1970</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="k">ORDER BY</span> <span class="nv">?date</span>
+</code></pre></div>
+<p>Because we’re selecting all variables with *, the new variable we’ve bound will add another column to the output</p>
+<h3 id="removing-duplicates">Removing Duplicates</h3>
+<p>Our music dataset is not complete by any means, and we have about a thousand albums. Suppose we want to find out the years in which these albums were released. One attempt would be to take the previous query, remove the filter, and only select the ?year variable.</p>
+<div class="highlight"><pre><span></span><code><span class="k">prefix</span> <span class="p">:</span> <span class="nl">&lt;http://stardog.com/tutorial/&gt;</span>
+
+<span class="k">SELECT</span> <span class="nv">?year</span>
+<span class="p">{</span>
+   <span class="nv">?album</span> <span class="k">a</span> <span class="p">:</span><span class="nt">Album</span> <span class="p">;</span>
+          <span class="p">:</span><span class="nt">artist</span> <span class="nv">?artist</span> <span class="p">;</span>
+          <span class="p">:</span><span class="nt">date</span> <span class="nv">?date</span>
+   <span class="k">BIND</span> <span class="p">(</span><span class="nf">year</span><span class="p">(</span><span class="nv">?date</span><span class="p">)</span> <span class="k">AS</span> <span class="nv">?year</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="k">ORDER BY</span> <span class="nv">?date</span>
+</code></pre></div>
+<p>But we will quickly discover that this query will still return many results, and the year values will be repeated:</p>
+<p>We can see that changing just the selected variables has no effect on the number of results returned by a query. We will still get one result for each matching pattern, so the number of rows in the result table won’t change; only the number of columns will change.</p>
+<p>In order to get rid of duplicates, we need to use the DISTINCT keyword right after SELECT:</p>
+<div class="highlight"><pre><span></span><code><span class="k">prefix</span> <span class="p">:</span> <span class="nl">&lt;http://stardog.com/tutorial/&gt;</span>
+
+<span class="k">SELECT</span> <span class="k">DISTINCT</span> <span class="nv">?year</span>
+<span class="p">{</span>
+   <span class="nv">?album</span> <span class="k">a</span> <span class="p">:</span><span class="nt">Album</span> <span class="p">;</span>
+          <span class="p">:</span><span class="nt">artist</span> <span class="nv">?artist</span> <span class="p">;</span>
+          <span class="p">:</span><span class="nt">date</span> <span class="nv">?date</span>
+   <span class="k">BIND</span> <span class="p">(</span><span class="nf">year</span><span class="p">(</span><span class="nv">?date</span><span class="p">)</span> <span class="k">AS</span> <span class="nv">?year</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="k">ORDER BY</span> <span class="nv">?year</span>
+</code></pre></div>
+<p>The results won’t have duplicates anymore</p>
+<h3 id="aggregation">Aggregation</h3>
+<p>Aggregation is applying a function to a list of values rather than to a single value. Unlike regular functions, aggregate functions can only be used in SELECT expressions. Built-in aggregates provided in SPARQL are COUNT, SUM, MIN, MAX, AVG, GROUP_CONCAT, and SAMPLE.</p>
+<p>We can find the earliest and the latest release dates of albums in our dataset by using the MIN and MAX aggregates:</p>
+<div class="highlight"><pre><span></span><code><span class="k">prefix</span> <span class="p">:</span> <span class="nl">&lt;http://stardog.com/tutorial/&gt;</span>
+
+<span class="k">SELECT</span> <span class="p">(</span><span class="nf">min</span><span class="p">(</span><span class="nv">?date</span><span class="p">)</span> <span class="k">as</span> <span class="nv">?minDate</span><span class="p">)</span> <span class="p">(</span><span class="nf">max</span><span class="p">(</span><span class="nv">?date</span><span class="p">)</span> <span class="k">as</span> <span class="nv">?maxDate</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nv">?album</span> <span class="k">a</span> <span class="p">:</span><span class="nt">Album</span> <span class="p">;</span>
+           <span class="p">:</span><span class="nt">date</span> <span class="nv">?date</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>We will get a single result with two columns</p>
+<p>The WHERE clause in this query would return a table with two columns and many rows if we didn’t use the aggregate functions. The MIN (respectively, MAX) function looks at the values in the specified column of the results table and returns the single smallest (respectively, largest) value found.</p>
+<p>We can use the COUNT function to return the number of rows in the result table. The query to find the number of albums in our dataset is this:</p>
+<div class="highlight"><pre><span></span><code><span class="k">prefix</span> <span class="p">:</span> <span class="nl">&lt;http://stardog.com/tutorial/&gt;</span>
+
+<span class="k">SELECT</span> <span class="p">(</span><span class="nf">count</span><span class="p">(</span><span class="nv">?album</span><span class="p">)</span> <span class="k">as</span> <span class="nv">?count</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nv">?album</span> <span class="k">a</span> <span class="p">:</span><span class="nt">Album</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>You can also count the relationships and how many times each type of relationship appears.</p>
+<div class="highlight"><pre><span></span><code><span class="k">prefix</span> <span class="p">:</span> <span class="nl">&lt;http://stardog.com/tutorial/&gt;</span>
+
+<span class="k">SELECT</span> <span class="nv">?predicate</span> <span class="p">(</span><span class="nf">COUNT</span><span class="p">(</span><span class="nv">?predicate</span><span class="p">)</span> <span class="k">as</span> <span class="nv">?predicateCount</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nv">?subject</span> <span class="nv">?predicate</span> <span class="nv">?object</span> <span class="p">.</span>
+<span class="p">}</span>
+<span class="k">GROUP BY</span> <span class="nv">?predicate</span>
+<span class="k">ORDER BY</span> <span class="k">DESC</span><span class="p">(</span><span class="nv">?predicateCount</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="grouping">Grouping</h3>
+<p>The previous aggregation examples worked over a single result table and returned a single row as the final result. We can also group the results based on the values of one or more variables and apply the aggregation functions to each group separately.</p>
+<p>Suppose we want to find the number of albums released each year. We can group the albums based on their release year and use the COUNT aggregate for each group:</p>
+<div class="highlight"><pre><span></span><code><span class="k">prefix</span> <span class="p">:</span> <span class="nl">&lt;http://stardog.com/tutorial/&gt;</span>
+
+<span class="k">SELECT</span> <span class="nv">?year</span> <span class="p">(</span><span class="nf">count</span><span class="p">(</span><span class="k">distinct</span> <span class="nv">?album</span><span class="p">)</span> <span class="k">AS</span> <span class="nv">?count</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nv">?album</span> <span class="k">a</span> <span class="p">:</span><span class="nt">Album</span> <span class="p">;</span>
+            <span class="p">:</span><span class="nt">date</span> <span class="nv">?date</span> <span class="p">;</span>
+    <span class="k">BIND</span> <span class="p">(</span><span class="nf">year</span><span class="p">(</span><span class="nv">?date</span><span class="p">)</span> <span class="k">AS</span> <span class="nv">?year</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="k">GROUP BY</span> <span class="nv">?year</span>
+<span class="k">ORDER BY</span> <span class="k">desc</span><span class="p">(</span><span class="nv">?count</span><span class="p">)</span>
+</code></pre></div>
+<p>We will get one result for each distinct year value.</p>
+<p>You might notice that we used the DISTINCT keyword inside the count aggregate. This is because some of the albums in our date have duplicate release dates. For example, the album “A Hard Day’s Night” has both 1964-06-26 and 1964-07-10 as release dates. This is due to the imperfection of our dataset, and using the DISTINCT keyword ensures we count the album only once for that year.</p>
+<p>This is not a perfect solution since it means we’ll double count albums if their multiple release dates are in different years. It’s better to clean up the data. Fortunately, we can use the aggregates to find which albums have multiple release dates:</p>
+<div class="highlight"><pre><span></span><code><span class="k">prefix</span> <span class="p">:</span> <span class="nl">&lt;http://stardog.com/tutorial/&gt;</span>
+
+<span class="k">SELECT</span> <span class="nv">?album</span> <span class="p">(</span><span class="nf">group_concat</span><span class="p">(</span><span class="nv">?date</span><span class="p">)</span> <span class="k">AS</span> <span class="nv">?dates</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nv">?album</span> <span class="k">a</span> <span class="p">:</span><span class="nt">Album</span> <span class="p">;</span>
+            <span class="p">:</span><span class="nt">date</span> <span class="nv">?date</span>
+<span class="p">}</span>
+<span class="k">GROUP BY</span> <span class="nv">?album</span>
+<span class="k">HAVING</span> <span class="p">(</span><span class="nf">count</span><span class="p">(</span><span class="nv">?date</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<p>The HAVING keyword we used at the end acts like an overall filter on the query results. Since the aggregates can only be used in SELECT expressions, we cannot use a regular FILTER (without introducing a subquery), so the HAVING keyword provides an easy way to define such filters.</p>
+<h3 id="subqueries">Subqueries</h3>
+<p>If we want to find the average number of albums released in a year, we need to use an aggregation function over the results of the previous query. This can be achieved by subqueries where we simply put a SELECT query inside another one:</p>
+<div class="highlight"><pre><span></span><code><span class="k">prefix</span> <span class="p">:</span> <span class="nl">&lt;http://stardog.com/tutorial/&gt;</span>
+
+<span class="k">SELECT</span> <span class="p">(</span><span class="nf">avg</span><span class="p">(</span><span class="nv">?count</span><span class="p">)</span> <span class="k">AS</span> <span class="nv">?avgCount</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="k">SELECT</span> <span class="nv">?year</span> <span class="p">(</span><span class="nf">count</span><span class="p">(</span><span class="nv">?album</span><span class="p">)</span> <span class="k">AS</span> <span class="nv">?count</span><span class="p">)</span>
+      <span class="p">{</span>
+            <span class="nv">?album</span> <span class="k">a</span> <span class="p">:</span><span class="nt">Album</span> <span class="p">;</span>
+                  <span class="p">:</span><span class="nt">date</span> <span class="nv">?date</span> <span class="p">;</span>
+            <span class="k">BIND</span> <span class="p">(</span><span class="nf">year</span><span class="p">(</span><span class="nv">?date</span><span class="p">)</span> <span class="k">AS</span> <span class="nv">?year</span><span class="p">)</span>
+      <span class="p">}</span>
+      <span class="k">GROUP BY</span> <span class="nv">?year</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The result of this query will be a single value.</p>
+<p>Of course, subqueries don’t have to use aggregation; it would be fine to use any kind of SELECT query as a subquery. If the outer WHERE clause contains additional patterns, then the subquery should be surrounded with {}.</p>
+<h3 id="union">Union</h3>
+<p>In our data, we have artists separated into two types: bands and solo artists. If we want to retrieve all artists along with their names, then we can use the UNION operator to combine the matches from two different patterns:</p>
+<div class="highlight"><pre><span></span><code><span class="k">prefix</span> <span class="p">:</span> <span class="nl">&lt;http://stardog.com/tutorial/&gt;</span>
+
+<span class="k">SELECT</span> <span class="nv">?name</span>
+<span class="p">{</span>
+    <span class="p">{</span> <span class="nv">?artist</span> <span class="k">a</span> <span class="p">:</span><span class="nt">SoloArtist</span> <span class="p">}</span>
+    <span class="k">UNION</span>
+    <span class="p">{</span> <span class="nv">?artist</span> <span class="k">a</span> <span class="p">:</span><span class="nt">Band</span> <span class="p">}</span>
+    <span class="nv">?artist</span> <span class="p">:</span><span class="nt">name</span> <span class="nv">?name</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The results will contain artists matching either pattern.</p>
+<p>If the same artists matched both patterns, we would get a duplicate result and need DISTINCT to get unique results.</p>
+<p>But actually :Band and :SoloArtist are subclasses of :Artist:</p>
+<p><em>TODO</em> check why query doesn&rsquo;t work</p>
+<div class="highlight"><pre><span></span><code><span class="k">prefix</span> <span class="p">:</span> <span class="nl">&lt;http://stardog.com/tutorial/&gt;</span>
+
+<span class="k">SELECT</span> <span class="nv">?name</span>
+<span class="p">{</span>
+    <span class="nv">?artist</span> <span class="k">a</span> <span class="p">:</span><span class="nt">Artist</span> <span class="p">;</span>
+    <span class="nn">rdfs</span><span class="p">:</span><span class="nt">label</span> <span class="nv">?name</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>And we can see our results are exactly the same.</p>
+<h3 id="optional-matches">Optional Matches</h3>
+<p>The following query returns the songs and their lengths:</p>
+<div class="highlight"><pre><span></span><code><span class="k">prefix</span> <span class="p">:</span> <span class="nl">&lt;http://stardog.com/tutorial/&gt;</span>
+
+<span class="k">SELECT</span> <span class="o">*</span>
+<span class="p">{</span>
+    <span class="nv">?song</span> <span class="k">a</span> <span class="p">:</span><span class="nt">Song</span> <span class="p">.</span>
+    <span class="nv">?song</span> <span class="p">:</span><span class="nt">length</span> <span class="nv">?length</span> <span class="p">.</span>
+<span class="p">}</span>
+<span class="k">LIMIT</span> <span class="mi">5000</span> <span class="c"># included to override default limit</span>
+</code></pre></div>
+<p>When we look at the results, we see this query returns 3,640 results.</p>
+<p>Whereas the query without the second pattern returns 3,749 songs:</p>
+<div class="highlight"><pre><span></span><code><span class="k">prefix</span> <span class="p">:</span> <span class="nl">&lt;http://stardog.com/tutorial/&gt;</span>
+
+<span class="k">SELECT</span> <span class="o">*</span>
+<span class="p">{</span>
+    <span class="nv">?song</span> <span class="k">a</span> <span class="p">:</span><span class="nt">Song</span> <span class="p">.</span>
+<span class="p">}</span>
+<span class="k">LIMIT</span> <span class="mi">5000</span> <span class="c"># included to override default limit</span>
+</code></pre></div>
+<p>This means there are 109 songs in our dataset that do not have any length information.</p>
+<p>We can use OPTIONAL blocks to match patterns that may exist for some nodes but not for others:</p>
+<div class="highlight"><pre><span></span><code><span class="k">prefix</span> <span class="p">:</span> <span class="nl">&lt;http://stardog.com/tutorial/&gt;</span>
+
+<span class="k">SELECT</span> <span class="nv">?song</span> <span class="nv">?length</span>
+<span class="p">{</span>
+    <span class="nv">?song</span> <span class="k">a</span> <span class="p">:</span><span class="nt">Song</span> <span class="p">.</span>
+    <span class="k">OPTIONAL</span> <span class="p">{</span>
+        <span class="nv">?song</span> <span class="p">:</span><span class="nt">length</span> <span class="nv">?length</span> <span class="p">.</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">LIMIT</span> <span class="mi">5000</span> <span class="c"># included to override default limit</span>
+</code></pre></div>
+<p>This query will return 3,749 results, where 109 rows will not have a value for the length.</p>
+<p>If we only want to see those rows where length is missing, we can add a filter to our query:</p>
+<div class="highlight"><pre><span></span><code><span class="k">prefix</span> <span class="p">:</span> <span class="nl">&lt;http://stardog.com/tutorial/&gt;</span>
+
+<span class="k">SELECT</span> <span class="nv">?song</span> <span class="nv">?length</span>
+<span class="p">{</span>
+    <span class="nv">?song</span> <span class="k">a</span> <span class="p">:</span><span class="nt">Song</span> <span class="p">.</span>
+    <span class="k">OPTIONAL</span> <span class="p">{</span>
+        <span class="nv">?song</span> <span class="p">:</span><span class="nt">length</span> <span class="nv">?length</span> <span class="p">.</span>
+    <span class="p">}</span>
+    <span class="k">FILTER</span><span class="p">(</span><span class="o">!</span><span class="nf">bound</span><span class="p">(</span><span class="nv">?length</span><span class="p">))</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>And we get the 109 results we were expecting.</p>
+<h3 id="negation">Negation</h3>
+<p>The last example shows a somewhat indirect way to find patterns that do not exist in the dataset by using a combination of OPTIONAL and FILTER expressions. But SPARQL provides a special kind of filter for this purpose: NOT EXISTS. The following query will return the same 109 results as the previous query:</p>
+<div class="highlight"><pre><span></span><code><span class="k">prefix</span> <span class="p">:</span> <span class="nl">&lt;http://stardog.com/tutorial/&gt;</span>
+
+<span class="k">SELECT</span> <span class="nv">?song</span>
+<span class="p">{</span>
+    <span class="nv">?song</span> <span class="k">a</span> <span class="p">:</span><span class="nt">Song</span> <span class="p">.</span>
+    <span class="k">FILTER</span> <span class="nf">NOT EXISTS</span> <span class="p">{</span>
+        <span class="nv">?song</span> <span class="p">:</span><span class="nt">length</span> <span class="nv">?length</span> <span class="p">.</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Any SPARQL construct can be used inside a NOT EXISTS block.</p>
+<h3 id="property-paths">Property Paths</h3>
+<p>The triple patterns match triples in the dataset, so they can only be used to find nodes that are directly connected. We can use property paths to match nodes that are connected via arbitrary-length paths. More generally, a property path is a regular expression describing the possible route between two nodes in a graph. Property paths can also be used to express some graph patterns more concisely.</p>
+<p>To explore what we can do with property paths, we will start with this query that uses two ordinary triple patterns to find pairs of people who wrote songs together:</p>
+<div class="highlight"><pre><span></span><code><span class="k">prefix</span> <span class="p">:</span> <span class="nl">&lt;http://stardog.com/tutorial/&gt;</span>
+
+<span class="k">select</span> <span class="k">distinct</span> <span class="nv">?artist</span> <span class="nv">?cowriter</span>
+<span class="p">{</span>
+    <span class="nv">?song</span> <span class="p">:</span><span class="nt">writer</span> <span class="nv">?artist</span> <span class="p">.</span>
+    <span class="nv">?song</span> <span class="p">:</span><span class="nt">writer</span> <span class="nv">?cowriter</span>
+    <span class="k">FILTER</span> <span class="p">(</span><span class="nv">?artist</span> <span class="o">!=</span> <span class="nv">?cowriter</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>We need DISTINCT in this query because the same pair might have cowritten multiple songs together. We need the FILTER because otherwise the query would match the songs with a single writer and bind the two variables ?artist and ?cowriter to the same person. Using a different variable does not ensure that the triple patterns match different triples in the data. This query returns each pair twice; we leave it as an exercise to the reader to come up with a different filter expression to return every pair only once.</p>
+<h4 id="inverse-path">INVERSE PATH</h4>
+<p>Adding the symbol ^ in front of a predicate (or a property path expression) makes it an inverse path expression. An inverse path expression simply flips the direction of the match: the subject of the triple pattern will match the object of the triple in the data, and the object of the triple pattern will match the subject. So an equivalent way to write the previous query is as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="k">prefix</span> <span class="p">:</span> <span class="nl">&lt;http://stardog.com/tutorial/&gt;</span>
+
+<span class="k">select</span> <span class="k">distinct</span> <span class="nv">?artist</span> <span class="nv">?cowriter</span>
+<span class="p">{</span>
+    <span class="nv">?artist</span> <span class="p">^:</span><span class="nt">writer</span> <span class="nv">?song</span> <span class="p">.</span>
+    <span class="nv">?song</span> <span class="p">:</span><span class="nt">writer</span> <span class="nv">?cowriter</span>
+    <span class="k">FILTER</span> <span class="p">(</span><span class="nv">?artist</span> <span class="o">!=</span> <span class="nv">?cowriter</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>By itself, an inverse property path expression is not very useful, but in combination with other property path expressions, it can be (as we will see next).</p>
+<h4 id="sequence-path">SEQUENCE PATH</h4>
+<p>When the object of one triple pattern is the same as the subject of another triple pattern, and we are not interested in the binding of the variable, we can combine the two patterns using a sequence path. A sequence path means the subject is connected to the object via the path of property expressions specified in the sequence. The next query returns the same results as the previous query:</p>
+<div class="highlight"><pre><span></span><code><span class="k">prefix</span> <span class="p">:</span> <span class="nl">&lt;http://stardog.com/tutorial/&gt;</span>
+
+<span class="k">select</span> <span class="k">distinct</span> <span class="nv">?artist</span> <span class="nv">?cowriter</span>
+<span class="p">{</span>
+    <span class="nv">?artist</span> <span class="p">^:</span><span class="nt">writer</span><span class="o">/</span><span class="p">:</span><span class="nt">writer</span> <span class="nv">?cowriter</span>
+    <span class="k">FILTER</span> <span class="p">(</span><span class="nv">?artist</span> <span class="o">!=</span> <span class="nv">?cowriter</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>There can be more than two expressions in a path if necessary. We can also use constants for the subject or the object, or both. The next query returns cowriters of Paul McCartney:</p>
+<div class="highlight"><pre><span></span><code><span class="k">prefix</span> <span class="p">:</span> <span class="nl">&lt;http://stardog.com/tutorial/&gt;</span>
+
+<span class="k">select</span> <span class="k">distinct</span> <span class="nv">?cowriter</span>
+<span class="p">{</span>
+    <span class="p">:</span><span class="nt">Paul_McCartney</span> <span class="p">^:</span><span class="nt">writer</span><span class="o">/</span><span class="p">:</span><span class="nt">writer</span> <span class="nv">?cowriter</span>
+    <span class="k">FILTER</span> <span class="p">(</span><span class="nv">?cowriter</span> <span class="o">!=</span> <span class="p">:</span><span class="nt">Paul_McCartney</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="k">order by</span> <span class="nv">?cowriter</span>
+</code></pre></div>
+<h4 id="recursive-paths">RECURSIVE PATHS</h4>
+<p>Suppose we want to find not only the cowriters of Paul McCartney, but also the cowriters of his cowriters, and continue finding cowriters recursively. We can use the recursive path operator + to follow a property path one or more times.</p>
+<div class="highlight"><pre><span></span><code><span class="k">prefix</span> <span class="p">:</span> <span class="nl">&lt;http://stardog.com/tutorial/&gt;</span>
+
+<span class="k">select</span> <span class="k">distinct</span> <span class="nv">?cowriter</span>
+<span class="p">{</span>
+    <span class="p">:</span><span class="nt">Paul_McCartney</span> <span class="p">(^:</span><span class="nt">writer</span><span class="o">/</span><span class="p">:</span><span class="nt">writer</span><span class="p">)</span><span class="o">+</span> <span class="nv">?cowriter</span>
+    <span class="k">FILTER</span> <span class="p">(</span><span class="nv">?cowriter</span> <span class="o">!=</span> <span class="p">:</span><span class="nt">Paul_McCartney</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="k">order by</span> <span class="nv">?cowriter</span>
+</code></pre></div>
+<p>The other recursive operator, * , is used to follow a path zero or more times. Following a path zero times means we don’t traverse any edges and simply return the same node as the starting node. This makes most sense when used in a sequence path as in rdf:type/rdfs:subClassOf*. This property path returns the type(s) of a node and all its superclasses.</p>
+<h4 id="optional-paths">OPTIONAL PATHS</h4>
+<p>In our dataset, we have both the solo albums released by Paul McCartney and the albums released by The Beatles. The next query would return both kinds of album:</p>
+<div class="highlight"><pre><span></span><code><span class="k">prefix</span> <span class="p">:</span> <span class="nl">&lt;http://stardog.com/tutorial/&gt;</span>
+
+<span class="k">select</span> <span class="nv">?album</span>
+<span class="p">{</span>
+  <span class="nv">?album</span> <span class="p">:</span><span class="nt">artist</span><span class="o">/</span><span class="p">:</span><span class="nt">member</span><span class="err">?</span> <span class="p">:</span><span class="nt">Paul_McCartney</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The ? suffix means we should follow a path zero or one times. The property path expression :artist/:member? would start with an album and first find all the nodes connected via the :artist predicate and return those nodes (since we would end up on those nodes when we follow the :member edge zero times). Then, if any of those nodes have a :member edge, it will follow those edges and return the new nodes we reach as well.</p>
+<h4 id="alternative-paths">ALTERNATIVE PATHS</h4>
+<p>Suppose we want to find all the songs related to Paul McCartney: songs released in either his solo albums or The Beatles’ albums, along with the songs he wrote that were recorded by other artists. We need to find three alternate paths from songs to Paul McCartney. The previous property path expression already (partially) encodes two of these paths, and the third alternate path can be introduced using the | path operator:</p>
+<div class="highlight"><pre><span></span><code><span class="k">prefix</span> <span class="p">:</span> <span class="nl">&lt;http://stardog.com/tutorial/&gt;</span>
+
+<span class="k">select</span> <span class="nv">?song</span>
+<span class="p">{</span>
+  <span class="nv">?song</span> <span class="p">(^:</span><span class="nt">track</span><span class="o">/</span><span class="p">:</span><span class="nt">artist</span><span class="o">/</span><span class="p">:</span><span class="nt">member</span><span class="err">?</span><span class="p">)</span><span class="err">|</span><span class="p">:</span><span class="nt">writer</span> <span class="p">:</span><span class="nt">Paul_McCartney</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.ebd0bdb7.min.js"></script>
+      
+    
+  </body>
+</html>
