@@ -4,8 +4,9 @@ nav:
     - Pre-course preparations: precourse.md
     - Course schedule: course_schedule.md
     - RDF concepts: concepts.md
-    - GraphDB demo: exercises.md
+    - GraphDB demo: demo.md
     - Music example: music.md
+    - GBA1 example: gba1.md
 
 theme:
   name: material

@@ -77,6 +77,10 @@ WHERE {
     }
     ```
 
+### DESCRIBE
+
+TODO
+
 ### Basic Graph Patterns
 
 When one or more triple patterns are used together, they form what is known as a Basic Graph Pattern (BGP). Let’s add one more triple pattern to our previous query to retrieve the artist for each album:
