@@ -40,7 +40,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 Could it be simplified?
 
-Let's look at it's structure when connecting the entities:
+Let's look at its structure when connecting the entities:
 
 <figure>
   <img src="../../assets/images/rdf-beatles.png" width="700"/>
@@ -221,7 +221,7 @@ ORDER BY ?date
 
 We can assign the output of a function to a variable using the BIND keyword. This might be useful if we want to reuse the function result in different parts of the query or if we want to increase readability when we have a lot of nested function calls.
 
-We can rewrite the previous query by binding the output of the year(?date) expression to a new variable ?year first and using the variable in the filter expresion:
+We can rewrite the previous query by binding the output of the year(?date) expression to a new variable ?year first and using the variable in the filter expression:
 
 ```sparql
 prefix : <http://stardog.com/tutorial/>
@@ -426,7 +426,7 @@ The following query returns the songs and their lengths:
 ```sparql
 prefix : <http://stardog.com/tutorial/>
 
-SELECT * 
+SELECT *
 {
     ?song a :Song .
     ?song :length ?length .
@@ -441,7 +441,7 @@ Whereas the query without the second pattern returns 3,749 songs:
 ```sparql
 prefix : <http://stardog.com/tutorial/>
 
-SELECT * 
+SELECT *
 {
     ?song a :Song .
 }
@@ -455,7 +455,7 @@ We can use OPTIONAL blocks to match patterns that may exist for some nodes but n
 ```sparql
 prefix : <http://stardog.com/tutorial/>
 
-SELECT ?song ?length 
+SELECT ?song ?length
 {
     ?song a :Song .
     OPTIONAL {
@@ -472,7 +472,7 @@ If we only want to see those rows where length is missing, we can add a filter t
 ```sparql
 prefix : <http://stardog.com/tutorial/>
 
-SELECT ?song ?length 
+SELECT ?song ?length
 {
     ?song a :Song .
     OPTIONAL {
@@ -491,7 +491,7 @@ The last example shows a somewhat indirect way to find patterns that do not exis
 ```sparql
 prefix : <http://stardog.com/tutorial/>
 
-SELECT ?song 
+SELECT ?song
 {
     ?song a :Song .
     FILTER NOT EXISTS {
@@ -506,7 +506,7 @@ Any SPARQL construct can be used inside a NOT EXISTS block.
 
 The triple patterns match triples in the dataset, so they can only be used to find nodes that are directly connected. We can use property paths to match nodes that are connected via arbitrary-length paths. More generally, a property path is a regular expression describing the possible route between two nodes in a graph. Property paths can also be used to express some graph patterns more concisely.
 
-To explore what we can do with property paths we will start with this query that uses two ordinary triple patterns to find pairs of people who wrote songs together:
+To explore what we can do with property paths, we will start with this query that uses two ordinary triple patterns to find pairs of people who wrote songs together:
 
 ```sparql
 prefix : <http://stardog.com/tutorial/>
@@ -552,7 +552,7 @@ select distinct ?artist ?cowriter
 }
 ```
 
-There can be more than two expressions in a path if necessary. We can also use constants for the subject or the object or both. The next query returns cowriters of Paul McCartney:
+There can be more than two expressions in a path if necessary. We can also use constants for the subject or the object, or both. The next query returns cowriters of Paul McCartney:
 
 ```sparql
 prefix : <http://stardog.com/tutorial/>
@@ -589,13 +589,13 @@ In our dataset, we have both the solo albums released by Paul McCartney and the 
 ```sparql
 prefix : <http://stardog.com/tutorial/>
 
-select ?album 
+select ?album
 {
   ?album :artist/:member? :Paul_McCartney
 }
 ```
 
-The ? suffix means we should follow a path zero or one times. The property path expression :artist/:member? would start with an album and first find all the nodes connected via the :artist predicate and return those nodes (since we would end up on those nodes when we follow the :member edge zero times). Then if any of those nodes have a :member edge, it will follow those edges and return the new nodes we reach as well.
+The ? suffix means we should follow a path zero or one times. The property path expression :artist/:member? would start with an album and first find all the nodes connected via the :artist predicate and return those nodes (since we would end up on those nodes when we follow the :member edge zero times). Then, if any of those nodes have a :member edge, it will follow those edges and return the new nodes we reach as well.
 
 #### ALTERNATIVE PATHS
 
@@ -604,7 +604,7 @@ Suppose we want to find all the songs related to Paul McCartney: songs released 
 ```sparql
 prefix : <http://stardog.com/tutorial/>
 
-select ?song 
+select ?song
 {
   ?song (^:track/:artist/:member?)|:writer :Paul_McCartney
 }
