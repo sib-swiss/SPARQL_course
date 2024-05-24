@@ -273,6 +273,26 @@
   
   
     <li class="md-nav__item">
+      <a href="../concepts.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RDF concepts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../exercises/" class="md-nav__link">
         
   
@@ -1131,6 +1151,7 @@ mathematical operators (+, -, /, *)</p>
 </code></pre></div>
 <p>Any SPARQL construct can be used inside a NOT EXISTS block.</p>
 <h3 id="property-paths">Property Paths</h3>
+<p>This is more advanced and optional for now ;)</p>
 <p>The triple patterns match triples in the dataset, so they can only be used to find nodes that are directly connected. We can use property paths to match nodes that are connected via arbitrary-length paths. More generally, a property path is a regular expression describing the possible route between two nodes in a graph. Property paths can also be used to express some graph patterns more concisely.</p>
 <p>To explore what we can do with property paths, we will start with this query that uses two ordinary triple patterns to find pairs of people who wrote songs together:</p>
 <div class="highlight"><pre><span></span><code><span class="k">prefix</span> <span class="p">:</span> <span class="nl">&lt;http://stardog.com/tutorial/&gt;</span>
