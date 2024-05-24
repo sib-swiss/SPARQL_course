@@ -2,7 +2,7 @@
 
 ## Learning outcomes
 
-**After having completed this chapter you will be able to:**
+**After having completed this chapter, you will be able to:**
 
 - Understand the structure of a simple '`biological`' database encoded in turtle
 - Write simple SELECT SPARQL queries
@@ -23,16 +23,29 @@ Some variants of this protein caused the [Gaucher disease](https://en.wikipedia.
 
 ## Export a ttl (Turtle) file from UniProt
 
+A Turtle file can be exported directly from a UniProt entry page.
+
+[![UniProt entry URL](assets/images/P04062_url.png "UniProt entry URL")](/assets/images/P04062_url.png)
+
+[![Export in FASTA](assets/images/P04062.fasta.png "Export in FASTA")](/assets/images/P04062.fasta.png)
+
+[![FASTA export](assets/images/P04062.fasta2.png "FASTA export")](/assets/images/P04062.fasta2.png)
+
+[![Export in Turtle](assets/images/P04062.ttl.png "Export in Turtle")](/assets/images/P04062.ttl.png)
 
 
 ## Import a ttl file in GraphDB
 
+### Create a new repository
 
 
-## Explore an RDF graph
+### Import a ttl file
+
+
+## Explore an RDF graph in GraphDB
 
 
 
-## SPARL queries
+## SPARQL queries in GraphDB
 
 
