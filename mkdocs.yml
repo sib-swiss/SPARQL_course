@@ -1,4 +1,4 @@
-site_name: My site
+site_name: Recon4IMD SPARQL Course
 nav:
     - Home: index.md
     - Precourse preparations: precourse.md

@@ -1,11 +1,11 @@
-# Course website
+# Course website  ![Recon4IMD](assets/images/Recon4IMD-logo.webp "Recon4IMD")
 
 ## Material
 
 * This website
 * Zoom meeting (through mail)
 * Google doc (through mail)
-* [Slack channel](https://slack.com)
+* Recon4IMD Teams channel ...
 
 ## Learning outcomes
 
@@ -38,7 +38,7 @@ Alternatively, (depending on your zoom version or OS) use the 'Reactions' button
   <img src="assets/images/reactions_zoom.png" width="200"/>
 </figure>
 
-A main source of communication will be our [slack channel](https://www.slack.com). Ask background questions that interest you personally at **#background**. During the exercises, e.g. if you are stuck or don't understand what is going on, use the slack channel **#q-and-a**.  This channel is not only meant for asking questions but also for answering questions of other participants. If you are replying to a question, use the "reply in thread" option:
+A main source of communication will be our **Recon4IMD Teams channel**. Ask background questions that interest you personally at **#background**. During the exercises, e.g. if you are stuck or don't understand what is going on, use the Teams channel **#SPARQL Course**.  This channel is not only meant for asking questions but also for answering questions of other participants. If you are replying to a question, use the "reply in thread" option:
 
 <figure>
   <img src="assets/images/reply_in_thread.png" width="350"/>
@@ -50,4 +50,4 @@ The teacher will review the answers, and add/modify if necessary. If you're real
 
 * During lectures: raise hand/zoom functionality
 * Personal interest questions: **#background**
-* During exercises: **\#q-and-a** on slack
+* During exercises: **\#SPARQL Course** on Teams
