@@ -14,8 +14,8 @@ theme:
   favicon: assets/images/SIB_logo.svg
 
 # Repository
-repo_name: sib-swiss/course_website_template
-repo_url: https://github.com/sib-swiss/course_website_template
+repo_name: sib-swiss/SPARQL_course
+repo_url: https://github.com/sib-swiss/SPARQL_course
 
 markdown_extensions:
   - abbr
