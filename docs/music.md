@@ -78,6 +78,7 @@ WHERE {
     ```
 
 ### Basic Graph Patterns
+
 When one or more triple patterns are used together, they form what is known as a Basic Graph Pattern (BGP). Let’s add one more triple pattern to our previous query to retrieve the artist for each album:
 
 ```sparql
@@ -404,6 +405,8 @@ If the same artists matched both patterns, we would get a duplicate result and n
 
 But actually :Band and :SoloArtist are subclasses of :Artist:
 
+*TODO* check why query doesn't work
+
 ```sparql
 prefix : <http://stardog.com/tutorial/>
 
@@ -577,7 +580,7 @@ select distinct ?cowriter
 order by ?cowriter
 ```
 
-The other recursive operator, *, is used to follow a path zero or more times. Following a path zero times means we don’t traverse any edges and simply return the same node as the starting node. This makes most sense when used in a sequence path as in rdf:type/rdfs:subClassOf*. This property path returns the type(s) of a node and all its superclasses.
+The other recursive operator, * , is used to follow a path zero or more times. Following a path zero times means we don’t traverse any edges and simply return the same node as the starting node. This makes most sense when used in a sequence path as in rdf:type/rdfs:subClassOf*. This property path returns the type(s) of a node and all its superclasses.
 
 #### OPTIONAL PATHS
 
