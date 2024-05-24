@@ -5,7 +5,7 @@
 * This website
 * Zoom meeting (through mail)
 * Google doc (through mail)
-* Recon4IMD Teams channel ...
+* Recon4IMD Teams channel: #SPARQL Course
 
 ## Learning outcomes
 
@@ -15,7 +15,7 @@ After this course, you will be able to:
 
 ### Learning outcomes explained
 
-To reach the general learning outcomes above, we have set a number of smaller learning outcomes. Each chapter starts with these smaller learning outcomes. Use these at the start of a chapter to get an idea what you will learn. Use them also at the end of a chapter to evaluate whether you have learned what you were expected to learn.
+To reach the general learning outcomes above, we have set a number of smaller learning outcomes. Each chapter starts with these smaller learning outcomes. Use these at the start of a chapter to get an idea of what you will learn. Use them also at the end of a chapter to evaluate whether you have learned what you were expected to learn.
 
 ## Learning experiences
 
@@ -38,7 +38,7 @@ Alternatively, (depending on your zoom version or OS) use the 'Reactions' button
   <img src="assets/images/reactions_zoom.png" width="200"/>
 </figure>
 
-A main source of communication will be our **Recon4IMD Teams channel**. Ask background questions that interest you personally at **#background**. During the exercises, e.g. if you are stuck or don't understand what is going on, use the Teams channel **#SPARQL Course**.  This channel is not only meant for asking questions but also for answering questions of other participants. If you are replying to a question, use the "reply in thread" option:
+A main source of communication will be our **Recon4IMD Teams channel**. Ask background questions that interest you personally at **#background**. During the exercises, e.g. if you are stuck or don't understand what is going on, use the Teams channel **#SPARQL Course**.  This channel is not only meant for asking questions, but also for answering questions of other participants. If you are replying to a question, use the "reply in thread" option:
 
 <figure>
   <img src="assets/images/reply_in_thread.png" width="350"/>

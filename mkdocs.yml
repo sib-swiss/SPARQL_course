@@ -1,9 +1,9 @@
 site_name: Recon4IMD SPARQL Course
 nav:
     - Home: index.md
-    - Precourse preparations: precourse.md
+    - Pre-course preparations: precourse.md
     - Course schedule: course_schedule.md
-    - graphdb demo: exercises.md
+    - GraphDB demo: exercises.md
     - Music example: music.md
 
 theme:
