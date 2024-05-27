@@ -621,3 +621,20 @@ select ?song
 }
 ```
 
+To understand the results better, one could split this request in 2 and have one part for track-artist-member UNION one part for the writer part, and bind these variables, in order to understand where the actual result comes from
+
+??? done "Answer"
+    ```sparql
+    prefix : <http://stardog.com/tutorial/>
+
+    select *
+    {
+        {
+        ?song (^:track/:artist/:member?):Paul_McCartney
+        BIND( "^:track/:artist/:member?" AS ?path )
+        } UNION {
+        ?song :writer :Paul_McCartney
+        BIND( ":writer" AS ?path )
+        }
+    }
+    ```

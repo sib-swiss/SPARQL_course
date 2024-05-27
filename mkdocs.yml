@@ -3,10 +3,11 @@ nav:
     - Home: index.md
     - Pre-course preparations: precourse.md
     - Course schedule: course_schedule.md
-    - RDF concepts: concepts.md
+    - RDF basic concepts: concepts.md
     - GraphDB demo: demo.md
     - Music example: music.md
     - GBA1 example: gba1.md
+    - RDF a bit more advanced concepts: concepts_2.md
 
 theme:
   name: material
