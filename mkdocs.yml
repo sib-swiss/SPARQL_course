@@ -7,7 +7,9 @@ nav:
     - GraphDB demo: demo.md
     - Music example: music.md
     - GBA1 example: gba1.md
+    - Other SPARQL interfaces: other_interfaces.md
     - RDF a bit more advanced concepts: concepts_2.md
+    - Interesting SPARQL endpoint resources: interesting_endpoints.md
 
 theme:
   name: material

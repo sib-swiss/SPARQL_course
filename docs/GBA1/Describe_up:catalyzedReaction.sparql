@@ -1,4 +1,4 @@
-# Describe up:catalyzedReaction
+# Describe the up:catalyzedReaction concept
 
 PREFIX up: <http://purl.uniprot.org/core/>
 DESCRIBE up:catalyzedReaction

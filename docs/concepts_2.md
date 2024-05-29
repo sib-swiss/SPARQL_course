@@ -1,4 +1,4 @@
-# RDF concepts
+# RDF, a bit more advanced concepts
 
 ## Learning outcomes
 
@@ -11,6 +11,4 @@
 
 [:fontawesome-solid-file-pdf: Download the presentation](../assets/pdf/....pdf){: .md-button }
 
-[Turtle format](https://en.wikipedia.org/wiki/Turtle_(syntax))
-
-[Turtle spec](https://www.w3.org/TR/turtle/)
+[RDF spec](https://www.w3.org/RDF/)

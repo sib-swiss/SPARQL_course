@@ -1,4 +1,4 @@
-# RDF concepts
+# RDF basic concepts
 
 ## Learning outcomes
 
