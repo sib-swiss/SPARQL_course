@@ -195,5 +195,57 @@ The *predicate* qualifying the protein name is `up:fullName`.
     ```
 
 
+### What are Rhea reactions associated with an EC number?
+
+All GBA1 catalyzed reactions are reactions in [Rhea](https://www.rhea-db.org/).
+
+The GBA1 graph contains also enzyme classes (`up:enzymeClass` predicate).
+
+**Exercise:** Get the GBA1 Rhea reactions associated with an EC number
+
+??? done "Answer"
+    ```sparql
+	# What are Rhea reactions associated with an EC number?
+	
+	PREFIX up: <http://purl.uniprot.org/core/>
+	SELECT ?rhea ?EC WHERE {
+		?CatalyticActivity  up:catalyzedReaction   ?rhea .
+		?CatalyticActivity  up:enzymeClass         ?EC .
+	}
+	```
+    ```
+    ##########################################
+	
+	     rhea                            EC
+	1    http://rdf.rhea-db.org/13269    enzyme:3.2.1.45
+	2    http://rdf.rhea-db.org/14297    enzyme:3.2.1.46
+	```
+
+
+The 2 triples use the same subject: `?CatalyticActivity`.
+
+The query can be simplified with the **;** ("end of triple character")
+
+**Exercise:** Simplify the previous query with **;**
+
+??? done "Answer"
+    ```sparql title=""
+	# What are Rhea reactions associated with an EC number?
+	
+	PREFIX up: <http://purl.uniprot.org/core/>
+	SELECT ?rhea ?EC WHERE {
+		?CatalyticActivity  up:catalyzedReaction   ?rhea ;
+		                    up:enzymeClass         ?EC .
+	}
+    ```
+    ```
+	##########################################
+	
+	     rhea                            EC
+	1    http://rdf.rhea-db.org/13269    enzyme:3.2.1.45
+	2    http://rdf.rhea-db.org/14297    enzyme:3.2.1.46
+    ```
+
 ### TODO
+
 
