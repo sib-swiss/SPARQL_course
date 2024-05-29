@@ -80,5 +80,120 @@ The GraphDB main page shows statistics about the data in your repository
 
 ## SPARQL queries in GraphDB
 
+### DESCRIBE a concept
 
+As its name suggests, `DESCRIBE` provides a useful fragment of RDF, such as all the known details for each URI found.
+
+```sparql title="Describe_up:catalyzedReaction.sparql"
+# Describe the up:catalyzedReaction concept
+
+PREFIX up: <http://purl.uniprot.org/core/>
+DESCRIBE up:catalyzedReaction
+```
+
+**Exercise:**
+
++ Where is the `up:catalyzedReaction` concept found in the graph?
++ In which predicates is it involved?
+
+??? done "Answer"
+	```
+	     subject                 predicate             object
+	1    up:catalyzedReaction    rdf:type              rdf:Property
+	2    up:catalyzedReaction    rdfs:subPropertyOf    up:catalyzedReaction
+	3    up:catalyzedReaction    rdfs:subPropertyOf    up:catalyzedReaction
+	```
+
+
+### What is the GBA1 protein name?
+
+The *predicate* qualifying the protein name is `up:fullName`.
+
+**Exercise:** Use this predicate to find the GBA1 protein (full) name.
+
+??? done "Answer"
+	```sparql title="Protein_name.sparql"
+	# Retrieve the protein name associated with the P04062 UniProt entry
+	
+	PREFIX up: <http://purl.uniprot.org/core/>
+	SELECT ?protein_name WHERE {
+		?s up:fullName ?protein_name .
+	}
+	```
+	```
+	####################################################################
+	
+	      protein_name
+	1    "Lysosomal acid glucosylceramidase"
+	```
+
+
+### What does this enzyme catalyze?
+
+**Exercise:** Using the `up:catalyzedReaction` predicate, get the reactions catalyzed by this enzyme.
+
+??? done "Answer"
+	```sparql title="This_enz_catalyses.sparql"
+	# What does this enzyme catalyse?
+	
+	PREFIX up: <http://purl.uniprot.org/core/>
+	SELECT ?reactions WHERE {
+		?s up:catalyzedReaction ?reactions .
+	}
+    ```
+    ```
+	##########################################
+	
+	      reactions
+	1     http://rdf.rhea-db.org/13269
+	2     http://rdf.rhea-db.org/14297
+	3     http://rdf.rhea-db.org/11956
+	4     http://rdf.rhea-db.org/58264
+	5     http://rdf.rhea-db.org/58324
+	6     http://rdf.rhea-db.org/58316
+	7     http://rdf.rhea-db.org/70303
+	8     http://rdf.rhea-db.org/70307
+	9     http://rdf.rhea-db.org/70311
+	10    http://rdf.rhea-db.org/70315
+	11    http://rdf.rhea-db.org/70235
+	12    http://rdf.rhea-db.org/70255
+	13    http://rdf.rhea-db.org/70239
+	14    http://rdf.rhea-db.org/70251
+    ```
+
+
+**Exercise:** Order this list by descending Rhea ids
+
+??? done "Answer"
+	```sparql
+	# What does this enzyme catalyse?
+	
+	PREFIX up: <http://purl.uniprot.org/core/>
+	SELECT ?reactions WHERE {
+		?s up:catalyzedReaction ?reactions .
+	}
+	ORDER BY DESC(?reactions)
+    ```
+    ```
+	##########################################
+	
+	      reactions
+	1     http://rdf.rhea-db.org/70315
+	2     http://rdf.rhea-db.org/70311
+	3     http://rdf.rhea-db.org/70307
+	4     http://rdf.rhea-db.org/70303
+	5     http://rdf.rhea-db.org/70255
+	6     http://rdf.rhea-db.org/70251
+	7     http://rdf.rhea-db.org/70239
+	8     http://rdf.rhea-db.org/70235
+	9     http://rdf.rhea-db.org/58324
+	10    http://rdf.rhea-db.org/58316
+	11    http://rdf.rhea-db.org/58264
+	12    http://rdf.rhea-db.org/14297
+	13    http://rdf.rhea-db.org/13269
+	14    http://rdf.rhea-db.org/11956
+    ```
+
+
+### TODO
 

@@ -1,6 +1,6 @@
 # What does this enzyme catalyse?
 
 PREFIX up: <http://purl.uniprot.org/core/>
-SELECT * WHERE {
-	?s up:catalyzedReaction ?o .
+SELECT ?reactions WHERE {
+	?s up:catalyzedReaction ?reactions .
 }
