@@ -169,9 +169,9 @@ The GBA1 graph contains also enzyme classes (`up:enzymeClass` predicate).
 	```
 
 
-The 2 triples use the same subject: `?CatalyticActivity`.
+The two triples use the same subject: `?CatalyticActivity`.
 
-The query can be simplified with the **;** ("end of triple character")
+The query can be simplified with the **;** punctuation sign.
 
 **Exercise:** Simplify the previous query with **;**
 
@@ -193,6 +193,25 @@ The query can be simplified with the **;** ("end of triple character")
 	2    http://rdf.rhea-db.org/14297    enzyme:3.2.1.46
     ```
 
-### TODO
 
+### What are Rhea reactions associated with an EC number, and those which are not?
+
+We have seen previously that GBA1 catalyzes 14 reactions. All of them are linked to Rhea, but not all of them are linked to an EC number.
+
+**Exercise:** Get the GBA1 Rhea reactions associated with an EC number, if any
+
+??? done "Answer"
+    ```sparql
+	# What ...
+	
+	```
+	```
+	##########################################
+	
+	     rhea                            EC
+	1    
+	```
+
+
+### TODO
 
