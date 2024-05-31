@@ -1,10 +1,8 @@
-# What are EC numbers associated with catalytic activities, if any?
+# What are reactions associated or not with an EC number?
 
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX up: <http://purl.uniprot.org/core/>
-SELECT * WHERE {
-        ?CatalyticActivity  rdf:type              up:Catalytic_Activity ;
-                            up:catalyzedReaction  ?rhea .
+SELECT ?reaction ?EC  WHERE {
+        ?CatalyticActivity  up:catalyzedReaction  ?reaction .
     OPTIONAL {
         ?CatalyticActivity  up:enzymeClass        ?EC .
     }
