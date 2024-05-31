@@ -222,7 +222,7 @@ We have seen previously that GBA1 catalyzes 14 reactions. All of them are linked
 	```
 	##########################################
 	
-	     rhea                            EC
+	     reaction                        EC
 	1    http://rdf.rhea-db.org/13269    enzyme:3.2.1.45
 	2    http://rdf.rhea-db.org/14297    enzyme:3.2.1.46
 	3    http://rdf.rhea-db.org/11956    
@@ -240,23 +240,182 @@ We have seen previously that GBA1 catalyzes 14 reactions. All of them are linked
 	```
 
 <br>
-### SELECT and FILTER 
+### SELECT and FILTER
+
+The results of the previous query are URI. You can see that by clicking on the *Raw response* button in the GraphDB result section.
+
+To filter on them, and apply comparison operators you have seen in the music example, you have to turn them (cast them) in a category easier to work on.
+
+You can stringify a URI/IRI with the `STR` function.
+
+E.g. `STR(?reaction)`
+
+**Exercise:** From the previous SPARQL query, filter them to get only reactions upper than "http://rdf.rhea-db.org/13269"
+
+??? done "Answer"
+    ```sparql
+	# What are reactions associated or not with an EC number, only with reactions upper than "http://rdf.rhea-db.org/13269"?
+	
+	PREFIX up: <http://purl.uniprot.org/core/>
+	SELECT ?reaction ?EC  WHERE {
+			?CatalyticActivity  up:catalyzedReaction  ?reaction .
+		OPTIONAL {
+			?CatalyticActivity  up:enzymeClass        ?EC .
+		}
+		FILTER( STR(?reaction) > "http://rdf.rhea-db.org/13269" )
+	}
+	```
+	```
+	##########################################
+	
+	     reaction                        EC
+	1    http://rdf.rhea-db.org/14297    enzyme:3.2.1.46
+	2    http://rdf.rhea-db.org/58264
+	3    http://rdf.rhea-db.org/58324
+	4    http://rdf.rhea-db.org/58316
+	5    http://rdf.rhea-db.org/70303
+	6    http://rdf.rhea-db.org/70307
+	7    http://rdf.rhea-db.org/70311
+	8    http://rdf.rhea-db.org/70315
+	9    http://rdf.rhea-db.org/70235
+	10   http://rdf.rhea-db.org/70255
+	11   http://rdf.rhea-db.org/70239
+	12   http://rdf.rhea-db.org/70251
+	```
+
+The `FILTER` function is very powerful. It can be combined with the `REGEX()` function to do almost everything you can think of ([REGEX manual](https://en.wikibooks.org/wiki/SPARQL/Expressions_and_Functions#REGEX)).
 
 
 <br>
-### SELECT and BIND 
+### SELECT and BIND
+
+The `STR()` cast can be assigned in a new variable.
+
+**Exercise:** Use the `BIND` function to do it
+
+??? done "Answer"
+    ```sparql
+	# What are reactions associated or not with an EC number, only with reactions upper than "http://rdf.rhea-db.org/13269"?
+	
+	PREFIX up: <http://purl.uniprot.org/core/>
+	SELECT ?reaction ?EC  WHERE {
+			?CatalyticActivity  up:catalyzedReaction  ?reaction .
+		OPTIONAL {
+			?CatalyticActivity  up:enzymeClass        ?EC .
+		}
+		BIND ( STR(?reaction) AS ?reac_string )
+		FILTER( ?reac_string > "http://rdf.rhea-db.org/13269" )
+	}
+    ```
+
+EC numbers are easily identifiable. We don't really need the *enzyme:* prefix.
+
+The `REPLACE` function is here for that ([REPLACE manual](https://en.wikibooks.org/wiki/SPARQL/Expressions_and_Functions#REPLACE)). It replaces all occurences of a *pattern* by another *pattern*.
+
+**Exercise:** Remove the *enzyme:* prefix, i.e. replace it by nothing, in a `BIND` function.
+
+Think to stringify `?EC` first.
+
+??? done "Answer"
+    ```sparql
+	# What are reactions associated or not with an EC number, only with reactions upper than "http://rdf.rhea-db.org/13269"?
+	
+	PREFIX up: <http://purl.uniprot.org/core/>
+	SELECT ?reaction ?ec  WHERE {
+			?CatalyticActivity  up:catalyzedReaction  ?reaction .
+		OPTIONAL {
+			?CatalyticActivity  up:enzymeClass        ?EC .
+		}
+		BIND ( STR(?reaction) AS ?reac_string )
+		BIND ( REPLACE( STR(?EC), "enzyme:", "" ) AS ?ec )
+		FILTER( ?reac_string > "http://rdf.rhea-db.org/13269" )
+	}
+	```
+	```
+	##########################################
+	
+	     reaction                        EC
+	1    http://rdf.rhea-db.org/14297    "http://purl.uniprot.org/enzyme/3.2.1.46"
+	```
+
+The stringification transforms `?EC` in its prefixed literal form `"http://purl.uniprot.org/enzyme/3.2.1.46"`.
+
+The right `REPLACE` pattern to apply is
+
+??? done "Answer"
+    ```sparql
+	BIND ( REPLACE( STR(?EC), "http://purl.uniprot.org/enzyme/", "" ) AS ?ec )
+	# for regex lovers
+	BIND ( REPLACE( STR(?EC), "^.*enzyme/", "" ) AS ?ec )
+	```
+    ```
+	##########################################
+	
+	     reaction                        EC
+	1    http://rdf.rhea-db.org/14297    "3.2.1.46"
+	```
 
 
 <br>
 ### SELECT and aggregation
 
+Go back to the *SELECT and OPTIONAL* query.
+
+**Exercise:**  We want now to `COUNT` how many reactions are found by this SPARQL query.
+
+??? done "Answer"
+    ```sparql
+	# How many reactions associated or not with an EC number?
+	
+	PREFIX up: <http://purl.uniprot.org/core/>
+	SELECT (COUNT(?reaction) AS ?count) WHERE {
+			?CatalyticActivity  up:catalyzedReaction  ?reaction .
+		OPTIONAL {
+			?CatalyticActivity  up:enzymeClass        ?EC .
+		}
+	}
+    ```
+    ```
+	##########################################
+	
+	     count
+	1    "14"^^xsd:integer
+	```
+
+You can notice that the returned result has the right type for a number i.e. `xsd:integer`.
+
 
 <br>
 ### SELECT and GROUP BY
 
+**Exercise:**  We want now to `COUNT` per EC number, i.e if EC numbers are found or not in the graph.
+
+??? done "Answer"
+    ```sparql
+	# How many reactions associated with each EC number?
+	 
+	PREFIX up: <http://purl.uniprot.org/core/>
+	SELECT ?EC (COUNT(?reaction) AS ?count) WHERE {
+			?CatalyticActivity  up:catalyzedReaction  ?reaction .
+		OPTIONAL {
+			?CatalyticActivity  up:enzymeClass        ?EC .
+		}
+	}
+	GROUP BY ?EC
+    ```
+    ```
+	##########################################
+	
+	     EC                 count
+	1    enzyme:3.2.1.45    "1"^^xsd:integer
+	2    enzyme:3.2.1.46    "1"^^xsd:integer
+	3                       "12"^^xsd:integer
+    ```
+
 
 <br>
 ### SELECT and subqueries
+
 
 
 <br>
