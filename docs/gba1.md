@@ -57,7 +57,7 @@ DESCRIBE up:catalyzedReaction
 	3    up:catalyzedReaction    rdfs:subPropertyOf    up:catalyzedReaction
 	```
 
-
+<br>
 ### SELECT what is the GBA1 protein name?
 
 The *predicate* qualifying the protein name is `up:fullName`.
@@ -80,7 +80,7 @@ The *predicate* qualifying the protein name is `up:fullName`.
 	1    "Lysosomal acid glucosylceramidase"
 	```
 
-
+<br>
 ### SELECT and ORDER which reactions are catalyzed by this enzyme?
 
 **Exercise:** Using the `up:catalyzedReaction` predicate, get the reactions catalyzed by GBA1.
@@ -149,7 +149,7 @@ All GBA1 catalyzed reactions are reactions in [Rhea](https://www.rhea-db.org/).
 	14    http://rdf.rhea-db.org/11956
     ```
 
-
+<br>
 ### SELECT (with multiple triples) what are the reactions associated with an EC number?
 
 The GBA1 graph contains also an enzyme class (`up:enzymeClass` predicate).
@@ -199,7 +199,7 @@ The query can be simplified with the **;** punctuation sign.
 	2    http://rdf.rhea-db.org/14297    enzyme:3.2.1.46
     ```
 
-
+<br>
 ### SELECT and OPTIONAL what are the reactions associated with an EC number, and those which are not?
 
 We have seen previously that GBA1 catalyzes 14 reactions. All of them are linked to Rhea, but not all of them are linked to an EC number.
@@ -239,7 +239,28 @@ We have seen previously that GBA1 catalyzes 14 reactions. All of them are linked
 	14   http://rdf.rhea-db.org/70251    
 	```
 
+<br>
+### SELECT and FILTER 
 
-### TODO
+
+<br>
+### SELECT and BIND 
+
+
+<br>
+### SELECT and aggregation
+
+
+<br>
+### SELECT and GROUP BY
+
+
+<br>
+### SELECT and subqueries
+
+
+<br>
+### SELECT and UNION
+
 
 
