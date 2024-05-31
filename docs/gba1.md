@@ -4,7 +4,7 @@
 
 **After having completed this chapter, you will be able to:**
 
-- Understand the structure of a simple '`biological`' database encoded in turtle
+- Understand the structure of a simple '`biological`' database encoded in Turtle
 - Write simple SELECT SPARQL queries
 
 
@@ -17,7 +17,11 @@ The exercises below follow the same structure as the [music exercises](/music/),
 
 Take some time to explore the GBA1 protein graph.
 
-It has a lot of classes connecting the different curated knowledges aggregated by the UniProt team.
+It has a lot of classes connecting the different knowledges curated and aggregated by the UniProt team.
+
+[![Class hierarchy in the GBA1 graph](assets/images/GraphDB-class-hierarchy.png "Class hierarchy in the GBA1 graph")](/assets/images/GraphDB-class-hierarchy.png)
+
+[![Class relationships in the GBA1 graph](assets/images/GraphDB-class-relationships.png "Class relationships in the GBA1 graph")](/assets/images/GraphDB-class-relationships.png)
 
 
 ## GBA1 graph SPARQL queries
