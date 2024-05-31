@@ -2,7 +2,7 @@
 
 ## Learning outcomes
 
-**After having completed this chapter you will be able to:**
+**After having completed this chapter, you will be able to:**
 
 - Understand RDF and SPARQL basic concepts
 - Understand RDF and the Turtle (`ttl`) format

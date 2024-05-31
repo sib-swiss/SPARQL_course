@@ -1,6 +1,6 @@
 ## Learning outcomes
 
-**After having completed this chapter you will be able to:**
+**After having completed this chapter, you will be able to:**
 
 - Understand the structure of a simple database encoded in turtle
 - Write simple SELECT SPARQL queries
@@ -174,7 +174,7 @@ SELECT *
           :artist ?artist ;
           :date ?date
 }
-ORDER BY desc(?date)
+ORDER BY DESC(?date)
 LIMIT 2
 ```
 
@@ -341,7 +341,7 @@ SELECT ?year (count(distinct ?album) AS ?count)
     BIND (year(?date) AS ?year)
 }
 GROUP BY ?year
-ORDER BY desc(?count)
+ORDER BY DESC(?count)
 ```
 
 We will get one result for each distinct year value.
@@ -517,7 +517,7 @@ To explore what we can do with property paths, we will start with this query tha
 ```sparql
 prefix : <http://stardog.com/tutorial/>
 
-select distinct ?artist ?cowriter
+SELECT DISTINCT ?artist ?cowriter
 {
     ?song :writer ?artist .
     ?song :writer ?cowriter
@@ -539,7 +539,7 @@ Adding the symbol ^ in front of a predicate (or a property path expression) make
 ```sparql
 prefix : <http://stardog.com/tutorial/>
 
-select distinct ?artist ?cowriter
+SELECT DISTINCT ?artist ?cowriter
 {
     ?artist ^:writer ?song .
     ?song :writer ?cowriter
@@ -556,7 +556,7 @@ When the object of one triple pattern is the same as the subject of another trip
 ```sparql
 prefix : <http://stardog.com/tutorial/>
 
-select distinct ?artist ?cowriter
+SELECT DISTINCT ?artist ?cowriter
 {
     ?artist ^:writer/:writer ?cowriter
     FILTER (?artist != ?cowriter)
@@ -568,7 +568,7 @@ There can be more than two expressions in a path if necessary. We can also use c
 ```sparql
 prefix : <http://stardog.com/tutorial/>
 
-select distinct ?cowriter
+SELECT DISTINCT ?cowriter
 {
     :Paul_McCartney ^:writer/:writer ?cowriter
     FILTER (?cowriter != :Paul_McCartney)
@@ -583,7 +583,7 @@ Suppose we want to find not only the cowriters of Paul McCartney, but also the c
 ```sparql
 prefix : <http://stardog.com/tutorial/>
 
-select distinct ?cowriter
+SELECT DISTINCT ?cowriter
 {
     :Paul_McCartney (^:writer/:writer)+ ?cowriter
     FILTER (?cowriter != :Paul_McCartney)
@@ -591,7 +591,7 @@ select distinct ?cowriter
 order by ?cowriter
 ```
 
-The other recursive operator, * , is used to follow a path zero or more times. Following a path zero times means we don’t traverse any edges and simply return the same node as the starting node. This makes most sense when used in a sequence path as in rdf:type/rdfs:subClassOf*. This property path returns the type(s) of a node and all its superclasses.
+The other recursive operator, * , is used to follow a path zero or more times. Following a path zero times means we don’t traverse any edges, and simply return the same node as the starting node. This makes most sense when used in a sequence path as in rdf:type/rdfs:subClassOf*. This property path returns the type(s) of a node and all its superclasses.
 
 #### OPTIONAL PATHS
 
@@ -600,7 +600,7 @@ In our dataset, we have both the solo albums released by Paul McCartney and the 
 ```sparql
 prefix : <http://stardog.com/tutorial/>
 
-select ?album
+SELECT ?album
 {
   ?album :artist/:member? :Paul_McCartney
 }
@@ -615,7 +615,7 @@ Suppose we want to find all the songs related to Paul McCartney: songs released 
 ```sparql
 prefix : <http://stardog.com/tutorial/>
 
-select ?song
+SELECT ?song
 {
   ?song (^:track/:artist/:member?)|:writer :Paul_McCartney
 }
@@ -627,7 +627,7 @@ To understand the results better, one could split this request in 2 and have one
     ```sparql
     prefix : <http://stardog.com/tutorial/>
 
-    select *
+    SELECT *
     {
         {
         ?song (^:track/:artist/:member?):Paul_McCartney

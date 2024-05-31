@@ -2,13 +2,13 @@
 
 ## Learning outcomes
 
-**After this demo you will be able to:**
+**After this demo, you will be able to:**
 
-- Navigate through graphdb and use its basic features
+- Navigate through GraphDB and use its basic features
 
 ## Material
 
-The exercises below are based on [this tutorial](https://docs.stardog.com/getting-started-series/getting-started-4) and [data](https://github.com/stardog-union/stardog-tutorials/tree/master/music) from [Stardog](https://docs.stardog.com/).
+The exercises below are based on [this tutorial](https://docs.stardog.com/getting-started-series/getting-started-4) and [data](https://github.com/stardog-union/stardog-tutorials/tree/master/music) from [Stardog](https://docs.stardog.com/) (another semantic graph database).
 
 Let's look at a small example of the music database:
 

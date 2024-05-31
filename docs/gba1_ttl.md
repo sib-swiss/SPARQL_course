@@ -4,8 +4,8 @@
 
 **After having completed this chapter, you will be able to:**
 
-- Understand the structure of a simple '`biological`' database encoded in turtle
-- Write simple SELECT SPARQL queries
+- Get a *Turtle* file from a UniProt entry
+- Import a *Turtle* file in GraphDB
 
 
 ## Material
