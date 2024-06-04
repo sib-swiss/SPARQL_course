@@ -9,50 +9,55 @@
 
 The exercises below are based on [this tutorial](https://docs.stardog.com/getting-started-series/getting-started-4) and [data](https://github.com/stardog-union/stardog-tutorials/tree/master/music) from [Stardog](https://docs.stardog.com/).
 
-Let's look at a small example of the music database:
+We will still use the "music" database that we explored in graphdb, below is a short extract with the Beatles as a reminder:
 
-```ttl title="beatles_notsimplified.ttl"
+```ttl title="beatles_simplified.ttl"
 PREFIX : <http://contextualise.dev/ontology/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-:The_Beatles      rdf:type  :Band .
-:The_Beatles      :name     "The Beatles" .
-:The_Beatles      :member   :John_Lennon .
-:The_Beatles      :member   :Paul_McCartney .
-:The_Beatles      :member   :Ringo_Starr .
-:The_Beatles      :member   :George_Harrison .
-:John_Lennon      rdf:type  :SoloArtist .
-:Paul_McCartney   rdf:type  :SoloArtist .
-:Ringo_Starr      rdf:type  :SoloArtist .
-:George_Harrison  rdf:type  :SoloArtist .
-:Please_Please_Me rdf:type  :Album .
-:Please_Please_Me :name     "Please Please Me" .
-:Please_Please_Me :date     "1963-03-22"^^xsd:date .
-:Please_Please_Me :artist   :The_Beatles .
-:Please_Please_Me :track    :Love_Me_Do .
-:Love_Me_Do       rdf:type  :Song .
-:Love_Me_Do       :name     "Love Me Do" .
-:Love_Me_Do       :length   125 .
-:Love_Me_Do       :writer   :John_Lennon .
-:Love_Me_Do       :writer   :Paul_McCartney .
+:The_Beatles      a :Band ;
+                  :name "The Beatles" ;
+                  :member :John_Lennon , :Paul_McCartney , :George_Harrison, :Ringo_Starr .
+:John_Lennon      a :SoloArtist .
+:Paul_McCartney   a :SoloArtist .
+:Ringo_Starr      a :SoloArtist .
+:George_Harrison  a :SoloArtist .
+:Please_Please_Me a :Album ;
+                  :name "Please Please Me" ;
+                  :date "1963-03-22"^^xsd:date ;
+                  :artist :The_Beatles ;
+                  :track :Love_Me_Do .
+:Love_Me_Do       a :Song ;
+                  :name "Love Me Do" ;
+                  :length 125 ;
+                  :writer :John_Lennon , :Paul_McCartney .
 ```
 
-Could it be simplified?
+What is different from the previous example?
 
-Let's look at its structure when connecting the entities:
+Let's use this music database to write (not too complicated) SPARQL queries:
 
-<figure>
-  <img src="../../assets/images/rdf-beatles.png" width="700"/>
-</figure>
+### DESCRIBE
 
-Now let's use a bigger music database that uses the same structure (it's from DBpedia):
+If you want to know everything in our db about Adele, you can type
 
-Download the ttl file [`music.ttl`](Music/music.ttl)
+```sparql
+DESCRIBE <http://stardog.com/tutorial/Adele>
+```
 
-It is already loaded on the ReconXKG server (https://reconx.vital-it.ch), but you can also install it on your local instance if you wish.
+which can also be written as
 
-Now select the albums from our database:
+```sparql
+prefix : <http://stardog.com/tutorial/>
+DESCRIBE :Adele
+```
+
+which will be used in the next examples in order to simplify the writing.
+
+### SELECT
+
+Select the albums from our database:
 
 ```sparql title="select_album.sparql"
 PREFIX : <http://stardog.com/tutorial/>
@@ -77,10 +82,6 @@ WHERE {
     }
     ```
 
-### DESCRIBE
-
-TODO
-
 ### Basic Graph Patterns
 
 When one or more triple patterns are used together, they form what is known as a Basic Graph Pattern (BGP). Let’s add one more triple pattern to our previous query to retrieve the artist for each album:
@@ -98,7 +99,7 @@ WHERE {
 
 What does the * mean here?
 
-**Exercise:** Add the solo artists and album "nice" names to this query. Hide the IDs from the results. Reorder by artist - album
+**Exercise:** Add the solo artists and album "nice" names to this query. Hide the IDs from the results. Reorder the columns by artist - album
 
 ??? done "Answer"
     ```sparql
@@ -108,9 +109,9 @@ What does the * mean here?
     SELECT ?artist_name ?album_name
     WHERE {
       ?album rdf:type :Album .
-        ?album :name ?album_name .
-        ?album :artist ?artist .
-        ?artist :name ?artist_name .
+      ?album :name ?album_name .
+      ?album :artist ?artist .
+      ?artist :name ?artist_name .
     }
     ```
 
@@ -131,6 +132,7 @@ SELECT *
 The third pattern matches 276 triples in our graph by itself, but because some solo artists have put out more than one album, 604 results are returned.
 
 ### Ordering Results
+
 Now we’ll run the following query, which includes album dates:
 
 ```sparql
@@ -638,3 +640,45 @@ To understand the results better, one could split this request in 2 and have one
         }
     }
     ```
+### CONSTRUCT
+
+
+While the SELECT query form returns variable bindings, the CONSTRUCT query form returns an *RDF graph*. 
+The graph is built based on a template which is used to generate RDF triples based on the results of matching the graph pattern of the query.
+
+Say we want to select a sub graph where David Bowie is a producer, we could write
+
+```sparql
+prefix : <http://stardog.com/tutorial/>
+ 
+CONSTRUCT { ?s ?p ?o } WHERE
+{
+	GRAPH ?g { ?s ?p ?o } . 
+	{ ?s :producer :David_Bowie  . }
+}
+```
+
+Try the Visual button on graphdb: you can visualize the whole sub graph!
+(there is a limit to the number of links shown, changing this parameter will change the visual a lot)
+
+Interestingly enough, Bowie is often both producer and singer. Are there other examples of artists in that case?
+Could we possibly create a new predicate "producer and artist" to make the results clearer?
+
+```sparql
+prefix : <http://stardog.com/tutorial/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+CONSTRUCT { 
+    :producer_and_artist a rdf:Property .
+    ?artist :producer_and_artist ?album .
+    } 
+WHERE
+{
+	{ ?artist :artist ?album .
+      ?artist :producer ?album .
+      #?artist rdf:type :SoloArtist .    
+    }
+}
+```
+
+You don't have write access on this repository, but you will see later that it is possible to *update* the graph to store this newly defined predicate, using the same *WHERE* clause!

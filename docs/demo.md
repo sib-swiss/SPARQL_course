@@ -8,9 +8,9 @@
 
 ## Material
 
-The exercises below are based on [this tutorial](https://docs.stardog.com/getting-started-series/getting-started-4) and [data](https://github.com/stardog-union/stardog-tutorials/tree/master/music) from [Stardog](https://docs.stardog.com/) (another semantic graph database).
+We uploaded a music database on the [reconx server](https://reconx.vital-it.ch), based on [this tutorial](https://docs.stardog.com/getting-started-series/getting-started-4) and [data](https://github.com/stardog-union/stardog-tutorials/tree/master/music) from [Stardog](https://docs.stardog.com/) (another semantic graph database).
 
-Let's look at a small example of the music database:
+Let's look at a small example of this database:
 
 ```ttl title="beatles_notsimplified.ttl"
 PREFIX : <http://contextualise.dev/ontology/>
@@ -44,11 +44,5 @@ Let's look at its structure when connecting the entities:
 <figure>
   <img src="../../assets/images/rdf-beatles.png" width="700"/>
 </figure>
-
-Now let's use a bigger music database that uses the same structure (it's from DBpedia):
-
-Download the ttl file [`music.ttl`](Music/music.ttl)
-
-It is already loaded on the ReconXKG server (https://reconx.vital-it.ch), but you can also install it on your local instance if you wish.
 
 Now let's browse through it on this website!
