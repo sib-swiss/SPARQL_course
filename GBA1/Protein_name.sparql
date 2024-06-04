@@ -1,0 +1,6 @@
+# Retrieve the protein name associated with the P04062 UniProt entry
+
+PREFIX up: <http://purl.uniprot.org/core/>
+SELECT ?protein_name WHERE {
+	?s up:fullName ?protein_name .
+}
