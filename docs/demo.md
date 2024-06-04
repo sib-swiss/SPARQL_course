@@ -42,7 +42,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 Let's look at its structure when connecting the entities:
 
 <figure>
-  <img src="../../assets/images/rdf-beatles.png" width="700"/>
+  <img src="assets/images/rdf-beatles.png" width="700"/>
 </figure>
 
 Now let's browse through it on this website!
