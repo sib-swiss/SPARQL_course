@@ -1,0 +1,6 @@
+# Which reactions are catalyzed by this enzyme?
+
+PREFIX up: <http://purl.uniprot.org/core/>
+SELECT ?reactions WHERE {
+	?s up:catalyzedReaction ?reactions .
+}

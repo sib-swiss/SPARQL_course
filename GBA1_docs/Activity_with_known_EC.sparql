@@ -1,0 +1,7 @@
+# What are Rhea reactions associated with an EC number?
+
+PREFIX up: <http://purl.uniprot.org/core/>
+SELECT ?rhea ?EC WHERE {
+	?CatalyticActivity  up:catalyzedReaction   ?rhea ;
+	                    up:enzymeClass         ?EC .
+}

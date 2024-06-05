@@ -1,0 +1,9 @@
+# What are reactions associated or not with an EC number?
+
+PREFIX up: <http://purl.uniprot.org/core/>
+SELECT ?reaction ?EC  WHERE {
+        ?CatalyticActivity  up:catalyzedReaction  ?reaction .
+    OPTIONAL {
+        ?CatalyticActivity  up:enzymeClass        ?EC .
+    }
+}

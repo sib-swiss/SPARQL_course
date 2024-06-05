@@ -447,6 +447,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#remote-queries-with-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remote queries with SERVICE
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -487,6 +496,26 @@
   
   <span class="md-ellipsis">
     Interesting SPARQL endpoint resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reconxkg/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ReconXKG knowledge graph
   </span>
   
 
@@ -548,6 +577,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#remote-queries-with-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remote queries with SERVICE
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -579,6 +617,48 @@
 <h2 id="metanetx">MetaNetX</h2>
 <p>The MetaNetX SPARQL endpoint is available at <a href="https://rdf.metanetx.org/">https://rdf.metanetx.org/</a></p>
 <p><a href="https://rdf.metanetx.org/"><img alt="MetaNetX SPARQL endpoint" src="../assets/images/MetaNetX-endpoint.png" title="MetaNetX SPARQL endpoint" /></a></p>
+<h2 id="remote-queries-with-service">Remote queries with SERVICE</h2>
+<p>One of the strength of SPARQL queries is they can be remotely executed, opening the <em>federated query</em> way of querying.</p>
+<p><strong>Exercise:</strong> Take an example query found in Rhea or MetaNetX, and execute it from the <a href="https://reconx.vital-it.ch">reconx.vital-it.ch</a> SPARQL interface.</p>
+<p>E.g.:
+<div class="highlight"><pre><span></span><code><span class="k">PREFIX</span> <span class="nn">rh</span><span class="p">:</span> <span class="nl">&lt;http://rdf.rhea-db.org/&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">rdfs</span><span class="p">:</span> <span class="nl">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">pubmed</span><span class="p">:</span> <span class="nl">&lt;http://rdf.ncbi.nlm.nih.gov/pubmed/&gt;</span>
+<span class="c"># Query 2</span>
+<span class="c"># Select all Rhea reactions annotated with a given Pubmed identifier (PMID = 29867142)</span>
+<span class="c">#</span>
+<span class="k">SELECT</span> <span class="nv">?pubmed</span> <span class="nv">?rhea</span> <span class="nv">?accession</span> <span class="nv">?isTransport</span> <span class="nv">?equation</span>
+<span class="k">WHERE</span> <span class="p">{</span>
+    <span class="nv">?rhea</span> <span class="nn">rdfs</span><span class="p">:</span><span class="nt">subClassOf</span> <span class="nn">rh</span><span class="p">:</span><span class="nt">Reaction</span> <span class="p">.</span>
+    <span class="nv">?rhea</span> <span class="nn">rh</span><span class="p">:</span><span class="nt">accession</span> <span class="nv">?accession</span> <span class="p">.</span>
+    <span class="nv">?rhea</span> <span class="nn">rh</span><span class="p">:</span><span class="nt">citation</span> <span class="nv">?pubmed</span> <span class="p">.</span>
+    <span class="k">VALUES</span> <span class="p">(</span><span class="nv">?pubmed</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="nn">pubmed</span><span class="p">:</span><span class="nt">29867142</span><span class="p">)</span> <span class="p">}</span>
+    <span class="nv">?rhea</span> <span class="nn">rh</span><span class="p">:</span><span class="nt">isTransport</span> <span class="nv">?isTransport</span> <span class="p">.</span>
+    <span class="nv">?rhea</span> <span class="nn">rh</span><span class="p">:</span><span class="nt">equation</span> <span class="nv">?equation</span> <span class="p">.</span>
+<span class="p">}</span> <span class="k">ORDER BY</span> <span class="nv">?rhea</span>
+</code></pre></div></p>
+<p><em>NB</em>: The Rhea SPARQL endpoint URL is <code>https://sparql.rhea-db.org/</code>.</p>
+<details class="done">
+<summary>Answer</summary>
+<div class="highlight"><pre><span></span><code><span class="k">PREFIX</span> <span class="nn">rh</span><span class="p">:</span> <span class="nl">&lt;http://rdf.rhea-db.org/&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">rdfs</span><span class="p">:</span> <span class="nl">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">pubmed</span><span class="p">:</span> <span class="nl">&lt;http://rdf.ncbi.nlm.nih.gov/pubmed/&gt;</span>
+<span class="c"># Query 2</span>
+<span class="c"># Select all Rhea reactions annotated with a given Pubmed identifier (PMID = 29867142)</span>
+<span class="c">#</span>
+<span class="k">SELECT</span> <span class="nv">?pubmed</span> <span class="nv">?rhea</span> <span class="nv">?accession</span> <span class="nv">?isTransport</span> <span class="nv">?equation</span>
+<span class="k">WHERE</span> <span class="p">{</span>
+    <span class="k">SERVICE</span> <span class="nl">&lt;https://sparql.rhea-db.org/&gt;</span> <span class="p">{</span>                  <span class="c"># &lt;--------------------</span>
+        <span class="nv">?rhea</span> <span class="nn">rdfs</span><span class="p">:</span><span class="nt">subClassOf</span> <span class="nn">rh</span><span class="p">:</span><span class="nt">Reaction</span> <span class="p">.</span>
+        <span class="nv">?rhea</span> <span class="nn">rh</span><span class="p">:</span><span class="nt">accession</span> <span class="nv">?accession</span> <span class="p">.</span>
+        <span class="nv">?rhea</span> <span class="nn">rh</span><span class="p">:</span><span class="nt">citation</span> <span class="nv">?pubmed</span> <span class="p">.</span>
+        <span class="k">VALUES</span> <span class="p">(</span><span class="nv">?pubmed</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="nn">pubmed</span><span class="p">:</span><span class="nt">29867142</span><span class="p">)</span> <span class="p">}</span>
+        <span class="nv">?rhea</span> <span class="nn">rh</span><span class="p">:</span><span class="nt">isTransport</span> <span class="nv">?isTransport</span> <span class="p">.</span>
+        <span class="nv">?rhea</span> <span class="nn">rh</span><span class="p">:</span><span class="nt">equation</span> <span class="nv">?equation</span> <span class="p">.</span>
+    <span class="p">}</span>                                                        <span class="c"># &lt;--------------------</span>
+<span class="p">}</span> <span class="k">ORDER BY</span> <span class="nv">?rhea</span>
+</code></pre></div>
+</details>
 
 
 

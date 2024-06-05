@@ -1,0 +1,11 @@
+---
+endpoint           : ${GRAPHDB_URL}
+username           : ${GRAPHDB_USERNAME}
+password           : ${GRAPHDB_PASSWORD}
+repository_id      : MUSIC_REP
+graphdb_config     : beatles-config.ttl
+setup_base_IRI     : http://rdf.example.org/context/
+graphs:
+  - dataset: MUSIC
+    file:
+      - /Users/fburdet/Documents/Courses/SPARQL_course/docs/music_docs/beatles.ttl
