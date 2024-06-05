@@ -10,12 +10,12 @@
 
 ## Material
 
-The exercises below follow the same structure as the [music exercises](/music/), with a focus on the GBA1 gene involved in the Gaucher disease.
+The exercises below follow the same structure as the [music example](/music/), with a focus on the GBA1 gene involved in the Gaucher disease.
 
 
 ## GBA1 graph exploration
 
-Take some time to explore the GBA1 protein graph.
+Take some time to explore the `GBA1` protein graph.
 
 It has a lot of classes connecting the different knowledges curated and aggregated by the UniProt team.
 
@@ -26,12 +26,10 @@ It has a lot of classes connecting the different knowledges curated and aggregat
 
 ## GBA1 graph SPARQL queries
 
-We will do some exercises on a simplified version of the GBA1 graph: *GBA1-simple*.
-
-In this version, most of the classes have been removed to keep what is centered around the reactions catalyzed by the enzyme GBA1.
+We will do some exercises on the GBA1 graph, with a focus on the reactions catalyzed by the enzyme GBA1.
 
 
-### DESCRIBE a concept
+### DESCRIBE
 
 You have seen during the graph exploration that some concepts can be cryptic, their name is not always meaningful.
 
@@ -57,12 +55,16 @@ DESCRIBE up:catalyzedReaction
 	3    up:catalyzedReaction    rdfs:subPropertyOf    up:catalyzedReaction
 	```
 
+
 <br>
-### SELECT what is the GBA1 protein name?
+### SELECT
+**What is the GBA1 protein name?**
 
 The *predicate* qualifying the protein name is `up:fullName`.
 
 **Exercise:** Use this predicate to find the GBA1 protein (full) name.
+
+A `SELECT` manual can be found [here](https://en.wikibooks.org/wiki/SPARQL/SELECT).
 
 ??? done "Answer"
 	```sparql title="Protein_name.sparql"
@@ -80,8 +82,12 @@ The *predicate* qualifying the protein name is `up:fullName`.
 	1    "Lysosomal acid glucosylceramidase"
 	```
 
+There are in fact several names, with time this protein has accumulated a lot of aliases.
+
+
 <br>
-### SELECT and ORDER which reactions are catalyzed by this enzyme?
+### SELECT and ORDER
+**Which reactions are catalyzed by this enzyme?**
 
 **Exercise:** Using the `up:catalyzedReaction` predicate, get the reactions catalyzed by GBA1.
 
@@ -149,8 +155,10 @@ All GBA1 catalyzed reactions are reactions in [Rhea](https://www.rhea-db.org/).
 	14    http://rdf.rhea-db.org/11956
     ```
 
+
 <br>
-### SELECT (with multiple triples) what are the reactions associated with an EC number?
+### SELECT (with multiple triples)
+**What are the reactions associated with an EC number?**
 
 The GBA1 graph contains also an enzyme class (`up:enzymeClass` predicate).
 
@@ -175,7 +183,7 @@ The GBA1 graph contains also an enzyme class (`up:enzymeClass` predicate).
 	```
 
 
-The two triples use the same subject: `?CatalyticActivity`.
+The two triples use the same subject named `?CatalyticActivity` in this example.
 
 The query can be simplified with the **;** punctuation sign.
 
@@ -199,12 +207,16 @@ The query can be simplified with the **;** punctuation sign.
 	2    http://rdf.rhea-db.org/14297    enzyme:3.2.1.46
     ```
 
+
 <br>
-### SELECT and OPTIONAL what are the reactions associated with an EC number, and those which are not?
+### SELECT and OPTIONAL
+**What are the reactions associated with an EC number, and those which are not?**
 
 We have seen previously that GBA1 catalyzes 14 reactions. All of them are linked to Rhea, but not all of them are linked to an EC number.
 
 **Exercise:** Get all the GBA1 Rhea reactions associated with an EC number or not
+
+A `OPTIONAL` manual can be found [here](https://en.wikibooks.org/wiki/SPARQL/OPTIONAL).
 
 ??? done "Answer"
     ```sparql
@@ -239,6 +251,7 @@ We have seen previously that GBA1 catalyzes 14 reactions. All of them are linked
 	14   http://rdf.rhea-db.org/70251    
 	```
 
+
 <br>
 ### SELECT and FILTER
 
@@ -246,7 +259,7 @@ The results of the previous query are URI. You can see that by clicking on the *
 
 To filter on them, and apply comparison operators you have seen in the music example, you have to turn them (cast them) in a category easier to work on.
 
-You can stringify a URI/IRI with the `STR` function.
+You can stringify a URI/IRI with the `STR` function (A `STR` manual can be found [here](https://en.wikibooks.org/wiki/SPARQL/Expressions_and_Functions#STR)).
 
 E.g. `STR(?reaction)`
 
@@ -292,6 +305,8 @@ The `FILTER` function is very powerful. It can be combined with the `REGEX()` fu
 The `STR()` cast can be assigned in a new variable.
 
 **Exercise:** Use the `BIND` function to do it
+
+A `BIND` manual can be found [here](https://en.wikibooks.org/wiki/SPARQL/Expressions_and_Functions#BIND).
 
 ??? done "Answer"
     ```sparql
@@ -363,6 +378,8 @@ Go back to the *SELECT and OPTIONAL* query.
 
 **Exercise:**  We want now to `COUNT` how many reactions are found by this SPARQL query.
 
+A `COUNT` manual can be found [here](https://en.wikibooks.org/wiki/SPARQL/Expressions_and_Functions#COUNT,_MIN,_MAX,_AVG_and_SUM) or [here](https://en.wikibooks.org/wiki/SPARQL/Aggregate_functions).
+
 ??? done "Answer"
     ```sparql
 	# How many reactions associated or not with an EC number?
@@ -388,7 +405,9 @@ You can notice that the returned result has the right type for a number i.e. `xs
 <br>
 ### SELECT and GROUP BY
 
-**Exercise:**  We want now to `COUNT` per EC number, i.e if EC numbers are found or not in the graph.
+**Exercise:**  We want now to `COUNT` per EC number, i.e to know how many time each EC number is found.
+
+A `GROUP BY` manual can be found [here](https://en.wikibooks.org/wiki/SPARQL/Modifiers#GROUP_BY).
 
 ??? done "Answer"
     ```sparql
@@ -416,10 +435,87 @@ You can notice that the returned result has the right type for a number i.e. `xs
 <br>
 ### SELECT and subqueries
 
+"SPARQL allows one SELECT query to be nested inside another. The inner SELECT query is called a `subquery` and is evaluated first. The subquery result variable(s) can then be used in the outer SELECT query."
+
+**Exercise:**  ???
+
+A *subquery* manual can be found [here](https://en.wikibooks.org/wiki/SPARQL/Subqueries).
+
 
 
 <br>
-### SELECT and UNION
+### Property paths
 
+Property paths are the way two items are connected. The simplest path is just a single property, which forms an ordinary triple:
+
+```sparql
+?item  path  ?property
+?item  --->  ?property
+```
+
+If items are not directly connected, their paths are longer. You can add path elements with a forward slash (`/`).
+
+`?item path1/path2/path3 ?property`
+
+This is equivalent to either of the following:
+
+```sparql
+?item   path1  ?temp1 .
+?temp1  path2  ?temp2 .
+?temp2  path3  ?property .
+```
+
+or
+
+```sparql
+?item path1 [ path2 [ path3 ?property ] ] .
+```
+
+A *property paths* manual can be found [here](https://en.wikibooks.org/wiki/SPARQL/Property_paths).
+
+[![Path view](assets/images/property_path.png "Path view")](/assets/images/property_path.png)
+
+```sparql
+?protein                        up:annotation         ?catalytic_activity_annotation .
+?catalytic_activity_annotation  up:catalyticActivity  ?activity .
+?activity                       up:catalyzedReaction  ?rhea .
+```
+
+**Exercise:** Using *property paths*, simplify the query above:
+
+??? done "Answer"
+    ```sparql
+	# Use property paths to simplify the previous query
+	
+	PREFIX up: <http://purl.uniprot.org/core/>
+	SELECT ?protein ?rhea WHERE {
+		?protein up:annotation/up:catalyticActivity/up:catalyzedReaction ?rhea .
+	}
+    ```
+    ```
+	##########################################
+	
+	      protein                                   rhea
+	1     http://purl.uniprot.org/uniprot/P04062    http://rdf.rhea-db.org/13269
+	2     http://purl.uniprot.org/uniprot/P04062    http://rdf.rhea-db.org/14297
+	3     http://purl.uniprot.org/uniprot/P04062    http://rdf.rhea-db.org/11956
+	4     http://purl.uniprot.org/uniprot/P04062    http://rdf.rhea-db.org/58264
+	5     http://purl.uniprot.org/uniprot/P04062    http://rdf.rhea-db.org/58324
+	6     http://purl.uniprot.org/uniprot/P04062    http://rdf.rhea-db.org/58316
+	7     http://purl.uniprot.org/uniprot/P04062    http://rdf.rhea-db.org/70303
+	8     http://purl.uniprot.org/uniprot/P04062    http://rdf.rhea-db.org/70307
+	9     http://purl.uniprot.org/uniprot/P04062    http://rdf.rhea-db.org/70311
+	10    http://purl.uniprot.org/uniprot/P04062    http://rdf.rhea-db.org/70315
+	11    http://purl.uniprot.org/uniprot/P04062    http://rdf.rhea-db.org/70235
+	12    http://purl.uniprot.org/uniprot/P04062    http://rdf.rhea-db.org/70255
+	13    http://purl.uniprot.org/uniprot/P04062    http://rdf.rhea-db.org/70239
+	14    http://purl.uniprot.org/uniprot/P04062    http://rdf.rhea-db.org/70251
+    ```
+
+Note we follow the directions shown as arrows on the graph picture, from the light green `P04062`, to the dark yellow `SIPEEA5CAFFB8CFF4D9`, to the light blue `SIP7F4F633380447C8F`, then to the red `13269`.
+
+#### Inverse path
+
+To go in the other direction, i.e. in the opposite direction the arrows go, we have to use *inverse path*.
 
 
