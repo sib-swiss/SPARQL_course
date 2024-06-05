@@ -522,4 +522,29 @@ To go in the other direction, i.e. in the opposite direction the arrows go, we h
 
 **Exercise:** Write a query to display EC numbers and associated Rhea (from red `13269` to red `3.2.1.45` in the graph picture above).
 
+??? done "Answer"
+    ```sparql
+	PREFIX up: <http://purl.uniprot.org/core/>
+	SELECT * WHERE {
+		?rhea ^up:catalyzedReaction/up:enzymeClass ?EC .
+	}
+    ```
+
+#### Recursive path
+
+An enzyme hierarchy RDF has also been added in the `GBA1` graph.
+
+The `skos:broaderTransitive` predicate allows to go up in the EC number hierarchy, one parent at the time.
+
+**Exercise:** From the *property path* example, display the parent**s** of the EC numbers found in GBA1.
+
+??? done "Answer"
+    ```sparql
+	PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+	PREFIX up: <http://purl.uniprot.org/core/>
+	SELECT DISTINCT ?EC2 WHERE {
+		?protein up:annotation/up:catalyticActivity/up:enzymeClass ?EC .
+		?EC skos:broaderTransitive+ ?EC2 .
+	}
+    ```
 
