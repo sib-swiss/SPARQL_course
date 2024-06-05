@@ -533,8 +533,15 @@ We need DISTINCT in this query because the same pair might have cowritten multip
 
 ??? done "Answer"
     ```sparql
-    
- 
+    prefix : <http://stardog.com/tutorial/>
+
+    select distinct ?artist ?cowriter
+    {
+        ?song :writer ?artist .
+        ?song :writer ?cowriter .
+        FILTER (?artist != ?cowriter && STR(?artist) < STR(?cowriter))
+    }
+    ```
 
 #### INVERSE PATH
 
@@ -652,15 +659,16 @@ Say we want to select a sub graph where David Bowie is a producer, we could writ
 
 ```sparql
 prefix : <http://stardog.com/tutorial/>
- 
-CONSTRUCT { ?s ?p ?o } WHERE
+
+CONSTRUCT WHERE
 {
-	GRAPH ?g { ?s ?p ?o } . 
-	{ ?s :producer :David_Bowie  . }
+    ?s :producer :David_Bowie .
+    ?s :artist :David_Bowie ;
+    	:track   ?track
 }
 ```
 
-Try the Visual button on graphdb: you can visualize the whole sub graph!
+Try the Visual button on graphdb: you can visualize the constructed graph!
 (there is a limit to the number of links shown, changing this parameter will change the visual a lot)
 
 Interestingly enough, Bowie is often both producer and singer. Are there other examples of artists in that case?
