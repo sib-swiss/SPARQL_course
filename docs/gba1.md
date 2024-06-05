@@ -518,4 +518,8 @@ Note we follow the directions shown as arrows on the graph picture, from the lig
 
 To go in the other direction, i.e. in the opposite direction the arrows go, we have to use *inverse path*.
 
+> Adding the symbol ^ in front of a predicate (or a property path expression) makes it an inverse path expression. An inverse path expression simply flips the direction of the match: the subject of the triple pattern will match the object of the triple in the data, and the object of the triple pattern will match the subject.
+
+**Exercise:** Write a query to display EC numbers and associated Rhea (from red `13269` to red `3.2.1.45` in the graph picture above).
+
 
