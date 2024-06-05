@@ -27,3 +27,6 @@ The MetaNetX SPARQL endpoint is available at [https://rdf.metanetx.org/](https:/
 
 [![MetaNetX SPARQL endpoint](assets/images/MetaNetX-endpoint.png "MetaNetX SPARQL endpoint")](https://rdf.metanetx.org/)
 
+
+## Remote queries with SERVICE
+TODO
