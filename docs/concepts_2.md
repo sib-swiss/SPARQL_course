@@ -8,6 +8,6 @@
 
 ## Material
 
-[:fontawesome-solid-file-pdf: Download the presentation](../assets/pdf/....pdf){: .md-button }
+[:fontawesome-solid-file-pdf: Download the presentation](/assets/pdf/Recon4IMD_course_Jun_2024.pdf){: .md-button }
 
 [RDF spec](https://www.w3.org/RDF/)
