@@ -11,6 +11,7 @@ nav:
     - Other SPARQL interfaces: other_interfaces.md
     - RDF a bit more advanced concepts: concepts_2.md
     - Interesting SPARQL endpoint resources: interesting_endpoints.md
+    - ReconXKG knowledge graph: reconxkg.md
 
 theme:
   name: material
