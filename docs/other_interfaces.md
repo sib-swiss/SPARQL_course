@@ -29,4 +29,50 @@ The MetaNetX SPARQL endpoint is available at [https://rdf.metanetx.org/](https:/
 
 
 ## Remote queries with SERVICE
-TODO
+
+One of the strength of SPARQL queries is they can be remotely executed, opening the *federated query* way of querying.
+
+**Exercise:** Take an example query found in Rhea or MetaNetX, and execute it from the [reconx.vital-it.ch](https://reconx.vital-it.ch) SPARQL interface.
+
+E.g.:
+```sparql
+PREFIX rh: <http://rdf.rhea-db.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX pubmed: <http://rdf.ncbi.nlm.nih.gov/pubmed/>
+# Query 2
+# Select all Rhea reactions annotated with a given Pubmed identifier (PMID = 29867142)
+#
+SELECT ?pubmed ?rhea ?accession ?isTransport ?equation
+WHERE {
+	?rhea rdfs:subClassOf rh:Reaction .
+	?rhea rh:accession ?accession .
+	?rhea rh:citation ?pubmed .
+	VALUES (?pubmed) { (pubmed:29867142) }
+	?rhea rh:isTransport ?isTransport .
+	?rhea rh:equation ?equation .
+} ORDER BY ?rhea
+```
+
+*NB*: The Rhea SPARQL endpoint URL is `https://sparql.rhea-db.org/`.
+
+??? done "Answer"
+    ```sparql
+	PREFIX rh: <http://rdf.rhea-db.org/>
+	PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+	PREFIX pubmed: <http://rdf.ncbi.nlm.nih.gov/pubmed/>
+	# Query 2
+	# Select all Rhea reactions annotated with a given Pubmed identifier (PMID = 29867142)
+	#
+	SELECT ?pubmed ?rhea ?accession ?isTransport ?equation
+	WHERE {
+		SERVICE <https://sparql.rhea-db.org/> {                  # <--------------------
+			?rhea rdfs:subClassOf rh:Reaction .
+			?rhea rh:accession ?accession .
+			?rhea rh:citation ?pubmed .
+			VALUES (?pubmed) { (pubmed:29867142) }
+			?rhea rh:isTransport ?isTransport .
+			?rhea rh:equation ?equation .
+		}                                                        # <--------------------
+	} ORDER BY ?rhea
+    ```
+
