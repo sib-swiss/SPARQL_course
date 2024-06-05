@@ -31,12 +31,12 @@ We will do some exercises on the GBA1 graph, with a focus on the reactions catal
 
 ### DESCRIBE
 
-You have seen during the graph exploration that some concepts can be cryptic, their name is not always meaningful.
+You have seen during the graph exploration that some properties can be cryptic, their name is not always meaningful.
 
 The `DESCRIBE` command is for you! As its name suggests, `DESCRIBE` provides a useful fragment of RDF, such as all the known details for each URI found.
 
 ```sparql title="Describe_up:catalyzedReaction.sparql"
-# Describe the up:catalyzedReaction concept
+# Describe the up:catalyzedReaction property
 
 PREFIX up: <http://purl.uniprot.org/core/>
 DESCRIBE up:catalyzedReaction
@@ -44,7 +44,7 @@ DESCRIBE up:catalyzedReaction
 
 **Exercise:**
 
-+ Where is the `up:catalyzedReaction` concept found in the graph?
++ Where is the `up:catalyzedReaction` property found in the graph?
 + In which predicates is it involved?
 
 ??? done "Answer"
