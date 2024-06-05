@@ -433,17 +433,6 @@ A `GROUP BY` manual can be found [here](https://en.wikibooks.org/wiki/SPARQL/Mod
 
 
 <br>
-### SELECT and subqueries
-
-"SPARQL allows one SELECT query to be nested inside another. The inner SELECT query is called a `subquery` and is evaluated first. The subquery result variable(s) can then be used in the outer SELECT query."
-
-**Exercise:**  ???
-
-A *subquery* manual can be found [here](https://en.wikibooks.org/wiki/SPARQL/Subqueries).
-
-
-
-<br>
 ### Property paths
 
 Property paths are the way two items are connected. The simplest path is just a single property, which forms an ordinary triple:
