@@ -7,6 +7,10 @@
 - Understand the structure of a simple database encoded in turtle
 - Write simple SELECT SPARQL queries
 
+First, a toy example showing examples of queries and solutions (pdf will be uploaded later)
+
+This is a do-it-yourself tutorial! We are here for questions and can discuss some of the exercices together!
+
 ## Material
 
 The exercises below are based on [this tutorial](https://docs.stardog.com/getting-started-series/getting-started-4) and [data](https://github.com/stardog-union/stardog-tutorials/tree/master/music) from [Stardog](https://docs.stardog.com/).
@@ -39,6 +43,14 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 What is different from the previous example?
 
 Let's use this music database to write (not too complicated) SPARQL queries:
+
+You can copy the queries from here and paste them in the [SPARQL interface](https://reconx.vital-it.ch/graphdb/sparql):
+
+<figure>
+  <img src="/assets/images/SPARQL_interface.png" width="700"/>
+</figure>
+
+Note that you can auto-complete using alt-enter!
 
 ### DESCRIBE
 
@@ -185,6 +197,7 @@ LIMIT 2
 In this query, we changed the dates to be sorted in reverse chronological order and limited the query to return only two results
 
 ### Filtering Results
+
 We can filter the results returned by a query using a FILTER expression. SPARQL supports many built-in functions for writing such expressions:
 
 comparison operators: (=, !=, <, <=, >, >=)
@@ -411,22 +424,6 @@ The results will contain artists matching either pattern.
 
 If the same artists matched both patterns, we would get a duplicate result and need DISTINCT to get unique results.
 
-But actually :Band and :SoloArtist are subclasses of :Artist:
-
-*TODO* check why query doesn't work
-
-```sparql
-prefix : <http://stardog.com/tutorial/>
-
-SELECT ?name
-{
-    ?artist a :Artist ;
-    rdfs:label ?name
-}
-```
-
-And we can see our results are exactly the same.
-
 ### Optional Matches
 
 The following query returns the songs and their lengths:
@@ -511,8 +508,6 @@ SELECT ?song
 Any SPARQL construct can be used inside a NOT EXISTS block.
 
 ### Property Paths
-
-This is more advanced and optional for now ;)
 
 The triple patterns match triples in the dataset, so they can only be used to find nodes that are directly connected. We can use property paths to match nodes that are connected via arbitrary-length paths. More generally, a property path is a regular expression describing the possible route between two nodes in a graph. Property paths can also be used to express some graph patterns more concisely.
 
@@ -619,6 +614,10 @@ SELECT ?album
 
 The ? suffix means we should follow a path zero or one times. The property path expression :artist/:member? would start with an album and first find all the nodes connected via the :artist predicate and return those nodes (since we would end up on those nodes when we follow the :member edge zero times). Then, if any of those nodes have a :member edge, it will follow those edges and return the new nodes we reach as well.
 
+If you are not sure to understand, try to first run the query with only :artist. 17 solo albums by McCartney.
+Then add again :member, but remove the ? . 27 albums by the Beatles.
+Then re-run the original query: indeed 44 albums!
+
 #### ALTERNATIVE PATHS
 
 Suppose we want to find all the songs related to Paul McCartney: songs released in either his solo albums or The Beatles’ albums, along with the songs he wrote that were recorded by other artists. We need to find three alternate paths from songs to Paul McCartney. The previous property path expression already (partially) encodes two of these paths, and the third alternate path can be introduced using the | path operator:
@@ -632,7 +631,11 @@ SELECT ?song
 }
 ```
 
-To understand the results better, one could split this request in 2 and have one part for track-artist-member UNION one part for the writer part, and bind these variables, in order to understand where the actual result comes from
+Remember that we need the :member? to get the paths to the solo songs by McCartney (:artist), and the paths that go on to the group, linked by :member.
+
+Why do we need the "^" for track? In case, go back to the simple scheme of the graph.
+
+To understand the "or" (|) part of the results better, one could split this request in 2 and have one part for track-artist-member UNION one part for the writer part, and bind these variables, in order to understand where the actual result comes from
 
 ??? done "Answer"
     ```sparql
@@ -649,13 +652,15 @@ To understand the results better, one could split this request in 2 and have one
         }
     }
     ```
-### CONSTRUCT
 
+But it is not possible to bind variables inside the paths.
+
+### CONSTRUCT
 
 While the SELECT query form returns variable bindings, the CONSTRUCT query form returns an *RDF graph*. 
 The graph is built based on a template which is used to generate RDF triples based on the results of matching the graph pattern of the query.
 
-Say we want to select a sub graph where David Bowie is a producer, we could write
+Say we want to select a sub graph where David Bowie is an artist and a producer, we could write
 
 ```sparql
 prefix : <http://stardog.com/tutorial/>
@@ -684,9 +689,8 @@ CONSTRUCT {
     } 
 WHERE
 {
-	{ ?artist :artist ?album .
+	{ ?artist :artist   ?album .
       ?artist :producer ?album .
-      #?artist rdf:type :SoloArtist .    
     }
 }
 ```

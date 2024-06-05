@@ -45,4 +45,10 @@ Let's look at its structure when connecting the entities:
   <img src="/assets/images/rdf-beatles.png" width="700"/>
 </figure>
 
-Now let's browse through it on this website!
+What is the longest path of relations going in the same direction?
+
+Now let's browse through it on the [graphdb interface](https://reconx.vital-it.ch/graphdb)!
+
+Goal: browse through the longest path forth and back!
+
+See that the data can be visualized as tables or as visual graph.
