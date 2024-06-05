@@ -25,8 +25,8 @@
 <P04062> rdf:type up:Protein ;
   up:reviewed true ;
   up:created "1986-11-01"^^xsd:date ;
-  up:modified "2024-03-27"^^xsd:date ;
-  up:version 266 ;
+  up:modified "2024-05-29"^^xsd:date ;
+  up:version 267 ;
   up:mnemonic "GBA1_HUMAN" ;
   up:replaces <A8K796> ,
     <B7Z5G2> ,
@@ -295,10 +295,8 @@
     <http://purl.uniprot.org/swisspalm/P04062> ,
     <http://purl.uniprot.org/biomuta/GBA> ,
     <http://purl.uniprot.org/dmdm/55584151> ,
-    <http://purl.uniprot.org/epd/P04062> ,
     <http://purl.uniprot.org/jpost/P04062> ,
     <http://purl.uniprot.org/massive/P04062> ,
-    <http://purl.uniprot.org/maxqb/P04062> ,
     <http://purl.uniprot.org/paxdb/9606-ENSP00000314508> ,
     <http://purl.uniprot.org/peptideatlas/P04062> ,
     <http://purl.uniprot.org/proteomicsdb/51642> ,
@@ -378,7 +376,8 @@
     <http://purl.uniprot.org/prints/PR00843> ,
     <http://purl.uniprot.org/supfam/SSF51445> ,
     <http://purl.uniprot.org/supfam/SSF51011> ,
-    <http://purl.uniprot.org/genevisible/P04062> ;
+    <http://purl.uniprot.org/epd/P04062> ,
+    <http://purl.uniprot.org/maxqb/P04062> ;
   up:conflictingSequence <P04062#SIP1094492D7F88461F> ,
     <P04062#SIPE98C3AE341F1F153> ,
     <P04062#SIPF9AA076FDE0398A9> ,
@@ -406,7 +405,7 @@
     tissue:564 ,
     tissue:934 ;
   up:encodedBy <P04062#gene-MD544D57355BC390EF63CE7CA6A58B41A2D> ;
-  up:annotation <P04062#SIP916262F5AD4C61F9> ,
+  up:annotation <P04062#SIPAC45A322AFB76D59> ,
     <P04062#SIPEEA5CAFFB8CFF4D9> ,
     <P04062#SIP7468F3F2F046F79B> ,
     <P04062#SIP053CCE1D3790179E> ,
@@ -421,7 +420,7 @@
     <P04062#SIP77674135E0C20618> ,
     <P04062#SIP68954E1F575B9F5D> ,
     <P04062#SIPB938107C55B94315> ,
-    <P04062#SIP7885C36D1AC16A16> ,
+    <P04062#SIP2A29024BCC795EF5> ,
     <P04062#SIPFFB457051F72B99E> ,
     <P04062#SIPE3A294F5FFCBD51E> ,
     <P04062#SIP770113D5549CFAE0> ,
@@ -430,7 +429,7 @@
     <P04062#SIPEB3E6210B93D2F44> ,
     <P04062#SIP626A15D87EB23425> ,
     <P04062#SIP6A7A010BAD6D8D89> ,
-    <P04062#SIP1C778865F3106EB3> ,
+    <P04062#SIP6B0C944E8A6F2575> ,
     <P04062#SIP484E83F5359BFDC2> ,
     <P04062#SIPD8160723B415E26A> ,
     <P04062#SIPDFDEFD4A34861258> ,
@@ -810,7 +809,7 @@
     <P04062#attribution-04B11BBF8281ECEE135DA022F3A0862C> ,
     <P04062#attribution-266B652D63A702CB4CB5B8A27D6AAE4A> ,
     <P04062#attribution-89AC1B682EEB440D50C4AEBB24FCA860> ,
-    <P04062#attribution-562142EC2EE0FF1A3A93CE2A16C56B9B> ,
+    <P04062#attribution-295741E3C125261C19BE36A1CC6DD997> ,
     <P04062#attribution-A6B3224B58C08AFE6D77E1BA4B51F925> ,
     <P04062#attribution-BCA47914E896E99ACFD92EA1790D2C04> ,
     <P04062#attribution-7AF446F18DB4D8FC7DCDC4991DDA905E> ,
@@ -3088,6 +3087,7 @@ citation:10206680 rdf:type up:Journal_Citation ;
     "Ben-Yoseph Y." ;
   skos:exactMatch pubmed:10206680 ;
   foaf:primaryTopicOf <https://pubmed.ncbi.nlm.nih.gov/10206680> ;
+  dcterms:identifier "doi:10.1002/(sici)1098-1004(1998)11:5<411::aid-humu11>3.0.co;2-2" ;
   up:date "1998"^^xsd:gYear ;
   up:name "Hum. Mutat." ;
   up:volume "11" ;
@@ -4392,7 +4392,7 @@ citation:36776904 rdf:type up:Journal_Citation ;
   up:database <http://purl.uniprot.org/database/SMR> .
 <http://purl.uniprot.org/biogrid/108899> rdf:type up:Resource ;
   up:database <http://purl.uniprot.org/database/BioGRID> ;
-  rdfs:comment "130" .
+  rdfs:comment "133" .
 <http://purl.uniprot.org/dip/DIP-38645N> rdf:type up:Resource ;
   up:database <http://purl.uniprot.org/database/DIP> .
 <http://purl.uniprot.org/intact/P04062> rdf:type up:Resource ;
@@ -4449,14 +4449,10 @@ citation:36776904 rdf:type up:Journal_Citation ;
   up:database <http://purl.uniprot.org/database/BioMuta> .
 <http://purl.uniprot.org/dmdm/55584151> rdf:type up:Resource ;
   up:database <http://purl.uniprot.org/database/DMDM> .
-<http://purl.uniprot.org/epd/P04062> rdf:type up:Resource ;
-  up:database <http://purl.uniprot.org/database/EPD> .
 <http://purl.uniprot.org/jpost/P04062> rdf:type up:Resource ;
   up:database <http://purl.uniprot.org/database/jPOST> .
 <http://purl.uniprot.org/massive/P04062> rdf:type up:Resource ;
   up:database <http://purl.uniprot.org/database/MassIVE> .
-<http://purl.uniprot.org/maxqb/P04062> rdf:type up:Resource ;
-  up:database <http://purl.uniprot.org/database/MaxQB> .
 <http://purl.uniprot.org/paxdb/9606-ENSP00000314508> rdf:type up:Resource ;
   up:database <http://purl.uniprot.org/database/PaxDb> .
 <http://purl.uniprot.org/peptideatlas/P04062> rdf:type up:Resource ;
@@ -4686,9 +4682,10 @@ citation:36776904 rdf:type up:Journal_Citation ;
   rdfs:comment "Glycosyl hydrolase domain" ;
   up:signatureSequenceMatch <http://purl.uniprot.org/isoforms/P04062-1#SUPFAM_SSF51011_match_1> ,
     <http://purl.uniprot.org/isoforms/P04062-1#SUPFAM_SSF51011_match_2> .
-<http://purl.uniprot.org/genevisible/P04062> rdf:type up:Resource ;
-  up:database <http://purl.uniprot.org/database/Genevisible> ;
-  rdfs:comment "HS" .
+<http://purl.uniprot.org/epd/P04062> rdf:type up:Resource ;
+  up:database <http://purl.uniprot.org/database/EPD> .
+<http://purl.uniprot.org/maxqb/P04062> rdf:type up:Resource ;
+  up:database <http://purl.uniprot.org/database/MaxQB> .
 <P04062#SIP1094492D7F88461F> rdf:type up:External_Sequence ;
   up:translatedFrom <http://purl.uniprot.org/embl-cds/BAH13357.1> .
 <P04062#SIPE98C3AE341F1F153> rdf:type up:External_Sequence ;
@@ -4866,12 +4863,12 @@ citation:36776904 rdf:type up:Journal_Citation ;
   rdf:predicate skos:prefLabel ;
   rdf:object "GBA1" ;
   up:attribution <P04062#attribution-6EBF84C0C97023D731F6663149E57375> .
-<P04062#SIP916262F5AD4C61F9> rdf:type up:Function_Annotation ;
-  rdfs:comment "Glucosylceramidase that catalyzes, within the lysosomal compartment, the hydrolysis of glucosylceramides/GlcCers (such as beta-D-glucosyl-(1<->1')-N-acylsphing-4-enine) into free ceramides (such as N-acylsphing-4-enine) and glucose (PubMed:9201993, PubMed:24211208, PubMed:15916907, PubMed:32144204). Plays a central role in the degradation of complex lipids and the turnover of cellular membranes (PubMed:27378698). Through the production of ceramides, participates in the PKC-activated salvage pathway of ceramide formation (PubMed:19279011). Catalyzes the glucosylation of cholesterol, through a transglucosylation reaction where glucose is transferred from GlcCer to cholesterol (PubMed:24211208, PubMed:26724485, PubMed:32144204). GlcCer containing mono-unsaturated fatty acids (such as beta-D-glucosyl-N-(9Z-octadecenoyl)-sphing-4-enine) are preferred as glucose donors for cholesterol glucosylation when compared with GlcCer containing same chain length of saturated fatty acids (such as beta-D-glucosyl-N-octadecanoyl-sphing-4-enine) (PubMed:24211208). Under specific conditions, may alternatively catalyze the reverse reaction, transferring glucose from cholesteryl 3-beta-D-glucoside to ceramide (PubMed:26724485) (Probable). Can also hydrolyze cholesteryl 3-beta-D-glucoside producing glucose and cholesterol (PubMed:24211208, PubMed:26724485). Catalyzes the hydrolysis of galactosylceramides/GalCers (such as beta-D-galactosyl-(1<->1')-N-acylsphing-4-enine), as well as the transfer of galactose between GalCers and cholesterol in vitro, but with lower activity than with GlcCers (PubMed:32144204). Contrary to GlcCer and GalCer, xylosylceramide/XylCer (such as beta-D-xyosyl-(1<->1')-N-acylsphing-4-enine) is not a good substrate for hydrolysis, however it is a good xylose donor for transxylosylation activity to form cholesteryl 3-beta-D-xyloside (PubMed:33361282)." .
-<#_9825BAE19A79DC91_rdfs.comment_496D5C2D6631FF5E> rdf:type rdf:Statement ;
-  rdf:subject <P04062#SIP916262F5AD4C61F9> ;
+<P04062#SIPAC45A322AFB76D59> rdf:type up:Function_Annotation ;
+  rdfs:comment "Glucosylceramidase that catalyzes, within the lysosomal compartment, the hydrolysis of glucosylceramides/GlcCers (such as beta-D-glucosyl-(1<->1')-N-acylsphing-4-enine) into free ceramides (such as N-acylsphing-4-enine) and glucose (PubMed:15916907, PubMed:24211208, PubMed:32144204, PubMed:9201993). Plays a central role in the degradation of complex lipids and the turnover of cellular membranes (PubMed:27378698). Through the production of ceramides, participates in the PKC-activated salvage pathway of ceramide formation (PubMed:19279011). Catalyzes the glucosylation of cholesterol, through a transglucosylation reaction where glucose is transferred from GlcCer to cholesterol (PubMed:24211208, PubMed:26724485, PubMed:32144204). GlcCer containing mono-unsaturated fatty acids (such as beta-D-glucosyl-N-(9Z-octadecenoyl)-sphing-4-enine) are preferred as glucose donors for cholesterol glucosylation when compared with GlcCer containing same chain length of saturated fatty acids (such as beta-D-glucosyl-N-octadecanoyl-sphing-4-enine) (PubMed:24211208). Under specific conditions, may alternatively catalyze the reverse reaction, transferring glucose from cholesteryl 3-beta-D-glucoside to ceramide (Probable) (PubMed:26724485). Can also hydrolyze cholesteryl 3-beta-D-glucoside producing glucose and cholesterol (PubMed:24211208, PubMed:26724485). Catalyzes the hydrolysis of galactosylceramides/GalCers (such as beta-D-galactosyl-(1<->1')-N-acylsphing-4-enine), as well as the transfer of galactose between GalCers and cholesterol in vitro, but with lower activity than with GlcCers (PubMed:32144204). Contrary to GlcCer and GalCer, xylosylceramide/XylCer (such as beta-D-xyosyl-(1<->1')-N-acylsphing-4-enine) is not a good substrate for hydrolysis, however it is a good xylose donor for transxylosylation activity to form cholesteryl 3-beta-D-xyloside (PubMed:33361282)." .
+<#_DB8BB83A88BE1B62_rdfs.comment_1C8CE263E0497733> rdf:type rdf:Statement ;
+  rdf:subject <P04062#SIPAC45A322AFB76D59> ;
   rdf:predicate rdfs:comment ;
-  rdf:object "Glucosylceramidase that catalyzes, within the lysosomal compartment, the hydrolysis of glucosylceramides/GlcCers (such as beta-D-glucosyl-(1<->1')-N-acylsphing-4-enine) into free ceramides (such as N-acylsphing-4-enine) and glucose (PubMed:9201993, PubMed:24211208, PubMed:15916907, PubMed:32144204). Plays a central role in the degradation of complex lipids and the turnover of cellular membranes (PubMed:27378698). Through the production of ceramides, participates in the PKC-activated salvage pathway of ceramide formation (PubMed:19279011). Catalyzes the glucosylation of cholesterol, through a transglucosylation reaction where glucose is transferred from GlcCer to cholesterol (PubMed:24211208, PubMed:26724485, PubMed:32144204). GlcCer containing mono-unsaturated fatty acids (such as beta-D-glucosyl-N-(9Z-octadecenoyl)-sphing-4-enine) are preferred as glucose donors for cholesterol glucosylation when compared with GlcCer containing same chain length of saturated fatty acids (such as beta-D-glucosyl-N-octadecanoyl-sphing-4-enine) (PubMed:24211208). Under specific conditions, may alternatively catalyze the reverse reaction, transferring glucose from cholesteryl 3-beta-D-glucoside to ceramide (PubMed:26724485) (Probable). Can also hydrolyze cholesteryl 3-beta-D-glucoside producing glucose and cholesterol (PubMed:24211208, PubMed:26724485). Catalyzes the hydrolysis of galactosylceramides/GalCers (such as beta-D-galactosyl-(1<->1')-N-acylsphing-4-enine), as well as the transfer of galactose between GalCers and cholesterol in vitro, but with lower activity than with GlcCers (PubMed:32144204). Contrary to GlcCer and GalCer, xylosylceramide/XylCer (such as beta-D-xyosyl-(1<->1')-N-acylsphing-4-enine) is not a good substrate for hydrolysis, however it is a good xylose donor for transxylosylation activity to form cholesteryl 3-beta-D-xyloside (PubMed:33361282)." ;
+  rdf:object "Glucosylceramidase that catalyzes, within the lysosomal compartment, the hydrolysis of glucosylceramides/GlcCers (such as beta-D-glucosyl-(1<->1')-N-acylsphing-4-enine) into free ceramides (such as N-acylsphing-4-enine) and glucose (PubMed:15916907, PubMed:24211208, PubMed:32144204, PubMed:9201993). Plays a central role in the degradation of complex lipids and the turnover of cellular membranes (PubMed:27378698). Through the production of ceramides, participates in the PKC-activated salvage pathway of ceramide formation (PubMed:19279011). Catalyzes the glucosylation of cholesterol, through a transglucosylation reaction where glucose is transferred from GlcCer to cholesterol (PubMed:24211208, PubMed:26724485, PubMed:32144204). GlcCer containing mono-unsaturated fatty acids (such as beta-D-glucosyl-N-(9Z-octadecenoyl)-sphing-4-enine) are preferred as glucose donors for cholesterol glucosylation when compared with GlcCer containing same chain length of saturated fatty acids (such as beta-D-glucosyl-N-octadecanoyl-sphing-4-enine) (PubMed:24211208). Under specific conditions, may alternatively catalyze the reverse reaction, transferring glucose from cholesteryl 3-beta-D-glucoside to ceramide (Probable) (PubMed:26724485). Can also hydrolyze cholesteryl 3-beta-D-glucoside producing glucose and cholesterol (PubMed:24211208, PubMed:26724485). Catalyzes the hydrolysis of galactosylceramides/GalCers (such as beta-D-galactosyl-(1<->1')-N-acylsphing-4-enine), as well as the transfer of galactose between GalCers and cholesterol in vitro, but with lower activity than with GlcCers (PubMed:32144204). Contrary to GlcCer and GalCer, xylosylceramide/XylCer (such as beta-D-xyosyl-(1<->1')-N-acylsphing-4-enine) is not a good substrate for hydrolysis, however it is a good xylose donor for transxylosylation activity to form cholesteryl 3-beta-D-xyloside (PubMed:33361282)." ;
   up:attribution <P04062#attribution-97DDB66D5B020C1E754441AE2D532505> ,
     <P04062#attribution-EB6C75FC55B35DA00192A95BA8C4DF91> ,
     <P04062#attribution-CF9E799C1344B8563F782086EC0B1215> ,
@@ -5159,12 +5156,12 @@ citation:36776904 rdf:type up:Journal_Citation ;
   rdf:predicate up:catalyzedPhysiologicalReaction ;
   rdf:object <http://rdf.rhea-db.org/70252> ;
   up:attribution <P04062#attribution-FAF83B8B52B462E6C64830A3CB7D5C7D> .
-<P04062#SIP7885C36D1AC16A16> rdf:type up:Activity_Regulation_Annotation ;
-  rdfs:comment "Synergistically activated by saposin-A and saposin-C, two saposin peptides produced by proteolytic processing of prosaposin/PSAP (PubMed:9201993). Saposin-C activates GBA1 through its recruitment to membranes (PubMed:10781797, PubMed:9201993). The membrane structure and composition in anionic phospholipids are also important for the activation (PubMed:9201993, PubMed:10781797). Activated by PKC in the salvage pathway of ceramide formation (PubMed:19279011). Inhibited by conduritol B epoxide/CBE (PubMed:24211208, PubMed:26724485)." .
-<#_8AA81AD7C76E9FB5_rdfs.comment_640FA28569E62A6D> rdf:type rdf:Statement ;
-  rdf:subject <P04062#SIP7885C36D1AC16A16> ;
+<P04062#SIP2A29024BCC795EF5> rdf:type up:Activity_Regulation_Annotation ;
+  rdfs:comment "Synergistically activated by saposin-A and saposin-C, two saposin peptides produced by proteolytic processing of prosaposin/PSAP (PubMed:9201993). Saposin-C activates GBA1 through its recruitment to membranes (PubMed:10781797, PubMed:9201993). The membrane structure and composition in anionic phospholipids are also important for the activation (PubMed:10781797, PubMed:9201993). Activated by PKC in the salvage pathway of ceramide formation (PubMed:19279011). Inhibited by conduritol B epoxide/CBE (PubMed:24211208, PubMed:26724485)." .
+<#_15DD3A1403EBD384_rdfs.comment_037EEB9674E7CF8E> rdf:type rdf:Statement ;
+  rdf:subject <P04062#SIP2A29024BCC795EF5> ;
   rdf:predicate rdfs:comment ;
-  rdf:object "Synergistically activated by saposin-A and saposin-C, two saposin peptides produced by proteolytic processing of prosaposin/PSAP (PubMed:9201993). Saposin-C activates GBA1 through its recruitment to membranes (PubMed:10781797, PubMed:9201993). The membrane structure and composition in anionic phospholipids are also important for the activation (PubMed:9201993, PubMed:10781797). Activated by PKC in the salvage pathway of ceramide formation (PubMed:19279011). Inhibited by conduritol B epoxide/CBE (PubMed:24211208, PubMed:26724485)." ;
+  rdf:object "Synergistically activated by saposin-A and saposin-C, two saposin peptides produced by proteolytic processing of prosaposin/PSAP (PubMed:9201993). Saposin-C activates GBA1 through its recruitment to membranes (PubMed:10781797, PubMed:9201993). The membrane structure and composition in anionic phospholipids are also important for the activation (PubMed:10781797, PubMed:9201993). Activated by PKC in the salvage pathway of ceramide formation (PubMed:19279011). Inhibited by conduritol B epoxide/CBE (PubMed:24211208, PubMed:26724485)." ;
   up:attribution <P04062#attribution-6AEAAD8A8878DF450F53566906C81652> ,
     <P04062#attribution-EB6C75FC55B35DA00192A95BA8C4DF91> ,
     <P04062#attribution-CF9E799C1344B8563F782086EC0B1215> ,
@@ -5288,14 +5285,14 @@ citation:36776904 rdf:type up:Journal_Citation ;
     <P04062#attribution-651E048392FC440BCE49FCC4727CBE84> ,
     <P04062#attribution-EDDF3CFE62D9993031F136796DE86C4E> ,
     <P04062#attribution-2352DC073BAA6E05429FF3D00C188A75> .
-<P04062#SIP1C778865F3106EB3> rdf:type up:Disease_Annotation ;
+<P04062#SIP6B0C944E8A6F2575> rdf:type up:Disease_Annotation ;
   rdfs:comment "The disease is caused by variants affecting the gene represented in this entry." ;
   up:disease disease:1647 .
-<#_CA1830C50E7F8F24_up.disease_E1A469778681BE10> rdf:type rdf:Statement ;
-  rdf:subject <P04062#SIP1C778865F3106EB3> ;
+<#_06C1E40111BEF8E2_up.disease_E1A469778681BE10> rdf:type rdf:Statement ;
+  rdf:subject <P04062#SIP6B0C944E8A6F2575> ;
   rdf:predicate up:disease ;
   rdf:object disease:1647 ;
-  up:attribution <P04062#attribution-562142EC2EE0FF1A3A93CE2A16C56B9B> ,
+  up:attribution <P04062#attribution-295741E3C125261C19BE36A1CC6DD997> ,
     <P04062#attribution-A6B3224B58C08AFE6D77E1BA4B51F925> ,
     <P04062#attribution-7AF446F18DB4D8FC7DCDC4991DDA905E> ,
     <P04062#attribution-B313B353E3F56E0C3C68EABD0809099F> ,
@@ -6757,7 +6754,7 @@ annotation:VAR_003276 rdf:type up:Natural_Variant_Annotation ;
   rdf:subject <P04062> ;
   rdf:predicate up:annotation ;
   rdf:object annotation:VAR_003276 ;
-  up:attribution <P04062#attribution-562142EC2EE0FF1A3A93CE2A16C56B9B> ,
+  up:attribution <P04062#attribution-295741E3C125261C19BE36A1CC6DD997> ,
     <P04062#attribution-6B78B18ABE76DCE18AF8047C86A3A282> .
 annotation:VAR_032204 rdf:type up:Natural_Variant_Annotation ;
   rdfs:comment "In GD; also found in a patient with Parkinson disease; decreased glucosylceramidase activity; 7% of normal activity." ;
@@ -7906,7 +7903,7 @@ position:22570998842143278tt409 rdf:type faldo:Position ,
   rdf:subject <P04062> ;
   rdf:predicate up:annotation ;
   rdf:object annotation:VAR_003302 ;
-  up:attribution <P04062#attribution-562142EC2EE0FF1A3A93CE2A16C56B9B> ,
+  up:attribution <P04062#attribution-295741E3C125261C19BE36A1CC6DD997> ,
     <P04062#attribution-A6B3224B58C08AFE6D77E1BA4B51F925> ,
     <P04062#attribution-7860927F0E90BC4F9E1D20318AB14FD0> ,
     <P04062#attribution-B313B353E3F56E0C3C68EABD0809099F> ,
@@ -10311,7 +10308,7 @@ isoform:P04062-5 rdf:type up:Modified_Sequence ;
   up:evidence ECO:0000304 .
 <P04062#attribution-89AC1B682EEB440D50C4AEBB24FCA860> up:manual true ;
   up:evidence ECO:0000255 .
-<P04062#attribution-562142EC2EE0FF1A3A93CE2A16C56B9B> up:manual true ;
+<P04062#attribution-295741E3C125261C19BE36A1CC6DD997> up:manual true ;
   up:evidence ECO:0000269 ;
   up:source citation:10206680 .
 <P04062#attribution-A6B3224B58C08AFE6D77E1BA4B51F925> up:manual true ;
