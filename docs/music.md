@@ -11,7 +11,7 @@
 
 The exercises below are based on [this tutorial](https://docs.stardog.com/getting-started-series/getting-started-4) and [data](https://github.com/stardog-union/stardog-tutorials/tree/master/music) from [Stardog](https://docs.stardog.com/).
 
-We will still use the "music" database that we explored in graphdb, below is a short extract with the Beatles as a reminder:
+We will still use the "music" database that we explored in graphdb, below is a short extract with the Beatles as a reminder :
 
 ```ttl title="beatles_simplified.ttl"
 PREFIX : <http://contextualise.dev/ontology/>
