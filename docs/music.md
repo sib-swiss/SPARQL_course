@@ -46,9 +46,7 @@ Let's use this music database to write (not too complicated) SPARQL queries:
 
 You can copy the queries from here and paste them in the [SPARQL interface](https://reconx.vital-it.ch/graphdb/sparql):
 
-<figure>
-  <img src="assets/images/SPARQL_interface.png" width="700"/>
-</figure>
+[![GBA1 in UniProt](assets/images/SPARQL_interface.png "")](/assets/images/SPARQL_interface.png)
 
 Note that you can auto-complete using alt-enter!
 
