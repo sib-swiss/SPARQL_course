@@ -8,9 +8,9 @@
 
 ## Material
 
-We uploaded a music database on the [reconx server](https://reconx.vital-it.ch), based on [this tutorial](https://docs.stardog.com/getting-started-series/getting-started-4) and [data](https://github.com/stardog-union/stardog-tutorials/tree/master/music) from [Stardog](https://docs.stardog.com/) (another semantic graph database).
+We uploaded a Beatles database on the [reconx server](https://reconx.vital-it.ch), based on [this tutorial](https://docs.stardog.com/getting-started-series/getting-started-4) and [data](https://github.com/stardog-union/stardog-tutorials/tree/master/music) from [Stardog](https://docs.stardog.com/) (another semantic graph database).
 
-Let's look at a small example of this database:
+Let's look at the (few) in this database:
 
 ```ttl title="beatles_notsimplified.ttl"
 PREFIX : <http://contextualise.dev/ontology/>
