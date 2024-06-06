@@ -1,0 +1,99 @@
+https://github.com/calipho-sib/sparql-playground
+https://docs.stardog.com/getting-started-series/getting-started-1
+https://docs.stardog.com/tutorials/rdf-graph-data-model
+https://developer.ibm.com/articles/j-sparql/?mhsrc=ibmsearch_a&mhq=SPARQl
+https://web-semantique.developpez.com/tutoriels/jena/arq/introduction-sparql/
+
+https://www.uniprot.org/uniprotkb/P04062/entry
+
+Good SPARQL intro:
+- https://github.com/calipho-sib/sparql-playground/blob/master/assets/archives/sparql-intro.pdf
+
+
+morning (3h)
+	intro RDF
+	exo GraphDB, visually
+		same requests in UniProt interface
+
+Start with https://docs.stardog.com/getting-started-series/getting-started-4 within GraphDB
+- GraphDB demo
+- Explore GraphDB
+- Explore Beatles graph
+- Same on GBA1 graph (more complicated)
+	TODO same queries than Beatles on GBA1
+		pass working queries from GraphDB to UniProt SPARQL interface (and/or WikiData)
+	Explain queries with ChatGPT ?
+
+afternoon (3h)
+	SPARQL intro
+
+	federated queries
+
+Continue with ReconXKG graph
+
+
+
+
+[x] Add login/cookie to https://reconx.vital-it.ch/
+
+[x] Check reconx-app RAM for ReconX GraphDB
+	Currently 30GB of RAM, 20GB used by GraphDB ReconXKG
+
+[ ] Store queries, one per file, in .sparql format to be loaded by kgstewart
+
+[ ] GBA1 examples with lipids
+	Start from the UniProt GBA1 page
+	Show how to get the ttl
+	How to import it in GraphDB
+	Show graphs, zoom in...
+	Queries...
+
+Missing rhea equation and chebi in the simplified ttl
+
+[ ] Explain queries with ChatGPT
+
+[x] Other SPARQL interfaces
+	UniProt
+	Wikidata
+	MetaNetX
+
+[x] Examples with OPTIONAL
+
+[x] List interesting SPARQL endpoint resources
+	https://yummydata.org/endpoint/
+
+DESCRIBE
+FROM
+GRAPH
+
+
+
+
+TODO:
+	Shorten the P04062.ttl file to keep only basic stuffs (e.g. name, id, activity) ???
+
+
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+select * where {
+    ?s skos:prefLabel ?o .
+} limit 100
+
+PREFIX up: <http://purl.uniprot.org/core/>
+select * where {
+    ?s up:fullName ?o .
+} limit 100
+
+PREFIX up: <http://purl.uniprot.org/core/>
+select * where {
+    ?s up:catalyzedReaction ?o .
+} limit 100
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX up: <http://purl.uniprot.org/core/>
+select * where {
+    ?CatalyticActivity rdf:type up:Catalytic_Activity ;
+                       up:enzymeClass ?EC ;
+    				   up:catalyzedReaction ?rhea
+} limit 100
+
+
