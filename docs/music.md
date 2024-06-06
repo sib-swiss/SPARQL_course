@@ -144,6 +144,13 @@ SELECT *
 
 The third pattern matches 276 triples in our graph by itself, but because some solo artists have put out more than one album, 604 results are returned.
 
+Note: be aware that :artist can be either a band or a solo artist:
+
+[![Artists are solo artists or groups](assets/images/Beatles_artist_group.png "Artists are solo artists or groups")](/assets/images/Beatles_artist_group.png)
+
+The predicate linking albums to solo artists or bands is the same: artist !
+Anthology_2 contains songs by the group Beatles and solo artist Paul McCartney.
+
 ### Ordering Results
 
 Now we’ll run the following query, which includes album dates:
