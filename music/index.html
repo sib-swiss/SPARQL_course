@@ -1061,6 +1061,10 @@
 <span class="p">}</span>
 </code></pre></div>
 <p>The third pattern matches 276 triples in our graph by itself, but because some solo artists have put out more than one album, 604 results are returned.</p>
+<p>Note: be aware that :artist can be either a band or a solo artist:</p>
+<p><a href="/assets/images/Beatles_artist_group.png"><img alt="Artists are solo artists or groups" src="../assets/images/Beatles_artist_group.png" title="Artists are solo artists or groups" /></a></p>
+<p>The predicate linking albums to solo artists or bands is the same: artist !
+Anthology_2 contains songs by the group Beatles and solo artist Paul McCartney.</p>
 <h3 id="ordering-results">Ordering Results</h3>
 <p>Now we’ll run the following query, which includes album dates:</p>
 <div class="highlight"><pre><span></span><code><span class="k">prefix</span> <span class="p">:</span> <span class="nl">&lt;http://stardog.com/tutorial/&gt;</span>
