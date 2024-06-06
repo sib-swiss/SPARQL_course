@@ -7,7 +7,8 @@
 - Understand the structure of a simple database encoded in turtle
 - Write simple SELECT SPARQL queries
 
-First, a toy example showing examples of queries and solutions (pdf will be uploaded later)
+First, a toy example showing examples of queries and solutions
+[:fontawesome-solid-file-pdf: Download the presentation](/SPARQL_course/assets/pdf/Recon4IMD_graph_queries.pdf){: .md-button }
 
 This is a do-it-yourself tutorial! We are here for questions and can discuss some of the exercices together!
 
@@ -46,7 +47,7 @@ Let's use this music database to write (not too complicated) SPARQL queries:
 
 You can copy the queries from here and paste them in the [SPARQL interface](https://reconx.vital-it.ch/graphdb/sparql):
 
-[![GBA1 in UniProt](assets/images/SPARQL_interface.png "")](/assets/images/SPARQL_interface.png)
+[![](assets/images/SPARQL_interface.png "")](/assets/images/SPARQL_interface.png)
 
 Note that you can auto-complete using alt-enter!
 
