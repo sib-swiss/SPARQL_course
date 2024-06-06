@@ -9,7 +9,7 @@
 
 ## Material
 
-[:fontawesome-solid-file-pdf: Download the presentation](/assets/pdf/Recon4IMD_intro_Jun_2024.pdf){: .md-button }
+[:fontawesome-solid-file-pdf: Download the presentation](/SPARQL_course/assets/pdf/Recon4IMD_intro_Jun_2024.pdf){: .md-button }
 
 [Turtle format](https://en.wikipedia.org/wiki/Turtle_(syntax))
 
