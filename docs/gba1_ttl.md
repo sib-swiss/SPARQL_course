@@ -14,24 +14,24 @@ The exercises below follow the same structure as the [music example](/music/), w
 
 Let's look at the [GBA1](https://www.uniprot.org/uniprotkb/P04062) entry in [UniProt](https://www.uniprot.org/):
 
-[![GBA1 in UniProt](assets/images/GBA1_in_UniProt.png "GBA1 in UniProt")](/assets/images/GBA1_in_UniProt.png)
+[![GBA1 in UniProt](assets/images/GBA1_in_UniProt.png "GBA1 in UniProt")](assets/images/GBA1_in_UniProt.png)
 
 Some variants of this protein caused the [Gaucher disease](https://en.wikipedia.org/wiki/Gaucher%27s_disease).
 
-[![GBA1 Disease & Variants in UniProt](assets/images/Gaucher_disease.png "GBA1 Disease & Variants in UniProt")](/assets/images/Gaucher_disease.png)
+[![GBA1 Disease & Variants in UniProt](assets/images/Gaucher_disease.png "GBA1 Disease & Variants in UniProt")](assets/images/Gaucher_disease.png)
 
 
 ## Export a ttl (Turtle) file from UniProt
 
 A Turtle file can be exported directly from a UniProt entry page.
 
-[![UniProt entry URL](assets/images/P04062_url.png "UniProt entry URL")](/assets/images/P04062_url.png)
+[![UniProt entry URL](assets/images/P04062_url.png "UniProt entry URL")](assets/images/P04062_url.png)
 
-[![Export in FASTA](assets/images/P04062.fasta.png "Export in FASTA")](/assets/images/P04062.fasta.png)
+[![Export in FASTA](assets/images/P04062.fasta.png "Export in FASTA")](assets/images/P04062.fasta.png)
 
-[![FASTA export](assets/images/P04062.fasta2.png "FASTA export")](/assets/images/P04062.fasta2.png)
+[![FASTA export](assets/images/P04062.fasta2.png "FASTA export")](assets/images/P04062.fasta2.png)
 
-[![Export in Turtle](assets/images/P04062.ttl.png "Export in Turtle")](/assets/images/P04062.ttl.png)
+[![Export in Turtle](assets/images/P04062.ttl.png "Export in Turtle")](assets/images/P04062.ttl.png)
 
 
 ## Import a ttl file in GraphDB

@@ -32,7 +32,7 @@ The MetaNetX SPARQL endpoint is available at [https://rdf.metanetx.org/](https:/
 
 One of the strength of SPARQL queries is they can be remotely executed, opening the *federated query* way of querying.
 
-**Exercise:** Take an example query found in Rhea or MetaNetX, and execute it from the [reconx.vital-it.ch](https://reconx.vital-it.ch) SPARQL interface.
+**Exercise:** Take an example query found in Rhea, and execute it from the [reconx.vital-it.ch](https://reconx.vital-it.ch) SPARQL interface.
 
 E.g.:
 ```sparql
