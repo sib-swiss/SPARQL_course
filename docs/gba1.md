@@ -19,9 +19,9 @@ Take some time to explore the `GBA1` protein graph.
 
 It has a lot of classes connecting the different knowledges curated and aggregated by the UniProt team.
 
-[![Class hierarchy in the GBA1 graph](assets/images/GraphDB-class-hierarchy.png "Class hierarchy in the GBA1 graph")](assets/images/GraphDB-class-hierarchy.png)
+[![Class hierarchy in the GBA1 graph](assets/images/GraphDB-class-hierarchy.png "Class hierarchy in the GBA1 graph")](../assets/images/GraphDB-class-hierarchy.png)
 
-[![Class relationships in the GBA1 graph](assets/images/GraphDB-class-relationships.png "Class relationships in the GBA1 graph")](assets/images/GraphDB-class-relationships.png)
+[![Class relationships in the GBA1 graph](assets/images/GraphDB-class-relationships.png "Class relationships in the GBA1 graph")](../assets/images/GraphDB-class-relationships.png)
 
 
 ## GBA1 graph SPARQL queries
@@ -462,7 +462,7 @@ or
 
 A *property paths* manual can be found [here](https://en.wikibooks.org/wiki/SPARQL/Property_paths).
 
-[![Path view](assets/images/property_path.png "Path view")](assets/images/property_path.png)
+[![Path view](assets/images/property_path.png "Path view")](../assets/images/property_path.png)
 
 ```sparql
 ?protein                        up:annotation         ?catalytic_activity_annotation .

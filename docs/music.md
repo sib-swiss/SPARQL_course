@@ -47,7 +47,7 @@ Let's use this music database to write (not too complicated) SPARQL queries:
 
 You can copy the queries from here and paste them in the [SPARQL interface](https://reconx.vital-it.ch/graphdb/sparql):
 
-[![](assets/images/SPARQL_interface.png "")](assets/images/SPARQL_interface.png)
+[![](assets/images/SPARQL_interface.png "")](../assets/images/SPARQL_interface.png)
 
 Note that you can auto-complete using alt-enter!
 
@@ -146,7 +146,7 @@ The third pattern matches 276 triples in our graph by itself, but because some s
 
 Note: be aware that :artist can be either a band or a solo artist:
 
-[![Artists are solo artists or groups](assets/images/Beatles_artist_group.png "Artists are solo artists or groups")](assets/images/Beatles_artist_group.png)
+[![Artists are solo artists or groups](assets/images/Beatles_artist_group.png "Artists are solo artists or groups")](../assets/images/Beatles_artist_group.png)
 
 The predicate linking albums to solo artists or bands is the same: artist !
 Anthology_2 contains songs by the group Beatles and solo artist Paul McCartney.
