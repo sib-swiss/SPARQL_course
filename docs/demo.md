@@ -41,7 +41,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 Let's look at its structure when connecting the entities:
 
-[![](assets/images/rdf-beatles.png "")](/assets/images/rdf-beatles.png)
+[![](assets/images/rdf-beatles.png "")](../assets/images/rdf-beatles.png)
 
 What is the longest path of relations going in the same direction?
 
